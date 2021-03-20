@@ -1,36 +1,20 @@
 package com.stathis.foodie.ui.dashboard
 
-import android.util.Log
-import com.stathis.foodie.APP_ID
-import com.stathis.foodie.APP_KEY
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
-import com.stathis.foodie.models.ResponseModel
-import com.stathis.foodie.network.ApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class DashboardActivity : AbstractActivity(R.layout.activity_dashboard) {
 
     override fun init() {
-        val recipe = "pizza"
-        ApiClient.getRecipes(recipe, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
-            override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
-                Log.d("", response.body().toString())
-            }
-
-            override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                Log.d("", t.message.toString())
-            }
-        })
+        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation_menu)
+        val navController = findNavController(R.id.nav_host_fragment)
+        navView.setupWithNavController(navController)
     }
 
-    override fun running() {
-        //
-    }
+    override fun running() {}
 
-    override fun stopped() {
-        //
-    }
+    override fun stopped() {}
 }
