@@ -6,7 +6,11 @@
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_profile">Profile</string>
+
     <string name="item_recipe_label">Recipe label</string>
+    <string name="profile_dummy_username">username</string>
+    <string name="profile_dummy_email">test@test.com</string>
+    <string name="my_favorites">My favorites</string>
 
 
 </resources>

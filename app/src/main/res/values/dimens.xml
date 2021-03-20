@@ -2,6 +2,7 @@
 <resources>
     <!-- Image Sizes -->
     <dimen name="image_100">100dp</dimen>
+    <dimen name="image_110">110dp</dimen>
     <dimen name="image_250">250dp</dimen>
 
     <!-- Paddings -->
@@ -10,6 +11,9 @@
 
     <!-- Margins -->
     <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_35">35dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="image_150">150dp</dimen>
 
 
 </resources>
