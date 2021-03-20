@@ -1,5 +1,9 @@
 package com.stathis.foodie.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 class TotalNutrientsMainModel(
 
     val ENERC_KCAL: NutrientModel,
@@ -34,4 +38,4 @@ class TotalNutrientsMainModel(
     val TOCPHA: NutrientModel,
     val VITK1: NutrientModel,
     val WATER: NutrientModel
-) : LocalModel
+) : LocalModel, Parcelable

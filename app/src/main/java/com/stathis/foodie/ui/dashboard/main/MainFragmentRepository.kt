@@ -22,7 +22,6 @@ class MainFragmentRepository {
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
                 data.value = null
             }
-
         })
     }
 }

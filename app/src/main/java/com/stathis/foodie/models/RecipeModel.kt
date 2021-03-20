@@ -1,9 +1,13 @@
 package com.stathis.foodie.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 class RecipeModel(
 
     val label: String,
-    val image: String,
+    val image: String?,
     val url: String,
     val shareAs: String,
     val ingredientLines: List<String>,
@@ -13,4 +17,4 @@ class RecipeModel(
     val totalTime: Double,
     val totalNutrients : TotalNutrientsMainModel
 
-) : LocalModel
+) : LocalModel,Parcelable

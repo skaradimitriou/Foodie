@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image Sizes -->
+    <dimen name="image_100">100dp</dimen>
+    <dimen name="image_250">250dp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="padding_5">5dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+
+    <!-- Margins -->
+    <dimen name="margin_10">10dp</dimen>
+
+
+</resources>

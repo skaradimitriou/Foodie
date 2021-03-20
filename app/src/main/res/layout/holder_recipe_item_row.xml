@@ -3,15 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_10">
+
+    <ImageView
+        android:id="@+id/recipe_item_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image_100"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/orange" />
 
     <TextView
         android:id="@+id/recipe_item_label"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/padding_5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Recipe label" />
+        app:layout_constraintTop_toBottomOf="@id/recipe_item_img"
+        tools:text="@string/item_recipe_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

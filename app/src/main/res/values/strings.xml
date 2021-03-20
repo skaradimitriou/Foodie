@@ -6,7 +6,7 @@
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_profile">Profile</string>
-
+    <string name="item_recipe_label">Recipe label</string>
 
 
 </resources>

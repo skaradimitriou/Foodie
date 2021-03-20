@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ui.details.DetailsActivity">
 
+    <ImageView
+        android:id="@+id/recipe_detail_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image_250"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/orange" />
+
+    <TextView
+        android:id="@+id/recipe_detail_label"
+        style="@style/h2_title_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/recipe_detail_img"
+        tools:text="@string/item_recipe_label" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
