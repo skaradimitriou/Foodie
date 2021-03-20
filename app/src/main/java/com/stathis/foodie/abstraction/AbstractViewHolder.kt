@@ -5,7 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.models.LocalModel
 
-abstract class AbstractViewHolder(itemView: View, callback : ItemClickListener? = null) : RecyclerView.ViewHolder(itemView) {
+abstract class AbstractViewHolder(itemView: View, callback: ItemClickListener? = null) :
+    RecyclerView.ViewHolder(itemView) {
 
     init {
         itemView.setOnClickListener {
@@ -13,5 +14,10 @@ abstract class AbstractViewHolder(itemView: View, callback : ItemClickListener? 
         }
     }
 
-    abstract fun present(localModel: LocalModel, callback : ItemClickListener)
+    fun bindData(data: LocalModel) {
+        itemView.tag = data
+        presentData(data)
+    }
+
+    abstract fun presentData(data: LocalModel)
 }
