@@ -6,14 +6,19 @@ import com.stathis.foodie.abstraction.AbstractActivity
 class LoginActivity : AbstractActivity(R.layout.activity_login) {
 
     override fun init() {
-        TODO("Not yet implemented")
+        /*
+        As a User, I want to :
+
+        a) be able to login to my account
+
+        */
     }
 
     override fun running() {
-        TODO("Not yet implemented")
+        //
     }
 
     override fun stopped() {
-        TODO("Not yet implemented")
+        //
     }
 }

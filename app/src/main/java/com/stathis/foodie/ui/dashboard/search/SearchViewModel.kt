@@ -1,35 +1,34 @@
-package com.stathis.foodie.ui.dashboard.main
+package com.stathis.foodie.ui.dashboard.search
 
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.stathis.foodie.adapters.RecipeAdapter
+import com.stathis.foodie.adapters.SearchAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
 
-class MainFragmentViewModel : ViewModel(), ItemClickListener {
+class SearchViewModel : ViewModel(), ItemClickListener {
 
-    private lateinit var callback: RecipeClickListener
-    private val repo = MainFragmentRepository()
+    private val repo = SearchRepository()
     val data = repo.data
-    val adapter = RecipeAdapter(this)
+    private lateinit var callback: RecipeClickListener
+    val adapter = SearchAdapter(this)
 
-    fun getDataFromRepository(callback: RecipeClickListener) {
+    fun getDataFromRepository(query: String, callback: RecipeClickListener) {
         this.callback = callback
-        repo.getDataFromApi()
+        repo.getDataFromApi(query)
     }
 
     fun observeData(owner: LifecycleOwner) {
         data.observe(owner, Observer {
-            Log.d("data is", "data is $it")
             adapter.submitList(it.hits)
         })
     }
 
-    fun removeObserver(owner: LifecycleOwner) {
+    fun removeObservers(owner: LifecycleOwner) {
         data.removeObservers(owner)
     }
 

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractFragment
-import com.stathis.foodie.listeners.MainFragmentListener
+import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.details.DetailsActivity
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -21,7 +21,7 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
     override fun running() {
         main_screen_recycler.adapter = viewModel.adapter
 
-        viewModel.getDataFromRepository(object : MainFragmentListener {
+        viewModel.getDataFromRepository(object : RecipeClickListener {
             override fun onRecipeClick(recipe: RecipeMain) {
                 startActivity(Intent(requireContext(),DetailsActivity::class.java)
                         .putExtra("RECIPE", recipe))

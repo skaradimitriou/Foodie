@@ -6,14 +6,19 @@ import com.stathis.foodie.abstraction.AbstractActivity
 class RegisterActivity : AbstractActivity(R.layout.activity_register) {
 
     override fun init() {
-        TODO("Not yet implemented")
+        /*
+        As a User, I want to :
+
+        a) be able to create a new account to the app
+
+        */
     }
 
     override fun running() {
-        TODO("Not yet implemented")
+        //
     }
 
     override fun stopped() {
-        TODO("Not yet implemented")
+        //
     }
 }
