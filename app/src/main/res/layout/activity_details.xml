@@ -7,20 +7,231 @@
     tools:context=".ui.details.DetailsActivity">
 
     <ImageView
-        android:id="@+id/recipe_detail_img"
+        android:id="@+id/recipe_details_img"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image_250"
+        android:layout_height="320dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/orange" />
+        tools:src="@color/orange" />
+
+    <View
+        android:id="@+id/recipe_card_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/like_btn"
+        android:layout_width="@dimen/image_40"
+        android:layout_height="@dimen/image_40"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/circle_black"
+        android:backgroundTint="@color/yellow"
+        android:padding="@dimen/margin_10"
+        android:src="@drawable/like_icon"
+        app:layout_constraintEnd_toEndOf="@id/share_btn"
+        app:layout_constraintTop_toBottomOf="@id/share_btn" />
+
+    <ImageView
+        android:id="@+id/share_btn"
+        android:layout_width="@dimen/image_40"
+        android:layout_height="@dimen/image_40"
+        android:layout_margin="@dimen/margin_10"
+        android:background="@drawable/circle_black"
+        android:padding="@dimen/margin_10"
+        android:src="@drawable/share_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/recipe_detail_label"
         style="@style/h2_title_bold"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/recipe_detail_img"
-        tools:text="@string/item_recipe_label" />
+        android:layout_margin="@dimen/margin_20"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/recipe_card_bg"
+        tools:text="@string/chicken_with_soup" />
+
+    <ImageView
+        android:id="@+id/clock_img"
+        android:layout_width="@dimen/image_16"
+        android:layout_height="@dimen/image_16"
+        android:layout_marginTop="@dimen/padding_5"
+        android:background="@drawable/clock_icon"
+        app:layout_constraintStart_toStartOf="@id/recipe_detail_label"
+        app:layout_constraintTop_toBottomOf="@id/recipe_detail_label" />
+
+    <TextView
+        android:id="@+id/recipe_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_5"
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="@id/clock_img"
+        app:layout_constraintStart_toEndOf="@id/clock_img"
+        app:layout_constraintTop_toTopOf="@+id/clock_img"
+        tools:text="@string/cook_time_dummy" />
+
+    <ImageView
+        android:id="@+id/calories_bg"
+        android:layout_width="@dimen/image_70"
+        android:layout_height="@dimen/image_70"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/circle_black"
+        android:backgroundTint="@color/dark_grey"
+        app:layout_constraintEnd_toStartOf="@id/protein_progressbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_time" />
+
+    <TextView
+        android:id="@+id/calories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/padding_15"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/calories_bg"
+        app:layout_constraintStart_toStartOf="@id/calories_bg"
+        app:layout_constraintTop_toTopOf="@id/calories_bg"
+        tools:text="99999" />
+
+    <TextView
+        android:id="@+id/calories_kcal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/recipe_kcal"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/calories_bg"
+        app:layout_constraintStart_toStartOf="@id/calories_bg"
+        app:layout_constraintTop_toBottomOf="@id/calories" />
+
+    <Button
+        android:id="@+id/open_recipe_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_15"
+        android:backgroundTint="@color/red"
+        android:text="@string/open_recipe"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/fats"
+        app:layout_constraintStart_toStartOf="@id/calories_bg" />
+
+    <ImageView
+        android:id="@+id/protein_progressbar"
+        android:layout_width="@dimen/image_70"
+        android:layout_height="@dimen/image_70"
+        android:layout_marginStart="@dimen/padding_15"
+        android:background="@drawable/circle_black"
+        android:backgroundTint="@color/navy"
+        app:layout_constraintEnd_toStartOf="@id/carbs_progressbar"
+        app:layout_constraintStart_toEndOf="@id/calories_bg"
+        app:layout_constraintTop_toTopOf="@id/calories_bg" />
+
+    <TextView
+        android:id="@+id/protein"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_15"
+        android:gravity="center_horizontal"
+        android:text="@string/_12g"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/protein_progressbar"
+        app:layout_constraintStart_toStartOf="@id/protein_progressbar"
+        app:layout_constraintTop_toTopOf="@id/protein_progressbar" />
+
+    <TextView
+        android:id="@+id/protein_placeholder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/protein"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/protein"
+        app:layout_constraintStart_toStartOf="@id/protein"
+        app:layout_constraintTop_toBottomOf="@id/protein" />
+
+    <ImageView
+        android:id="@+id/carbs_progressbar"
+        android:layout_width="@dimen/image_70"
+        android:layout_height="@dimen/image_70"
+        android:layout_marginStart="@dimen/padding_15"
+        android:background="@drawable/circle_black"
+        android:backgroundTint="@color/orange"
+        app:layout_constraintEnd_toStartOf="@id/fat_progressbar"
+        app:layout_constraintStart_toEndOf="@id/protein_progressbar"
+        app:layout_constraintTop_toTopOf="@id/calories_bg" />
+
+    <TextView
+        android:id="@+id/carbs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/padding_15"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/carbs_progressbar"
+        app:layout_constraintStart_toStartOf="@id/carbs_progressbar"
+        app:layout_constraintTop_toTopOf="@id/carbs_progressbar"
+        tools:text="@string/_12g" />
+
+    <TextView
+        android:id="@+id/carbs_placeholder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/carbs"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/carbs"
+        app:layout_constraintStart_toStartOf="@id/carbs"
+        app:layout_constraintTop_toBottomOf="@id/carbs" />
+
+    <ImageView
+        android:id="@+id/fat_progressbar"
+        android:layout_width="@dimen/image_70"
+        android:layout_height="@dimen/image_70"
+        android:layout_marginStart="@dimen/padding_15"
+        android:background="@drawable/circle_black"
+        android:backgroundTint="@color/yellow_sft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/carbs_progressbar"
+        app:layout_constraintTop_toTopOf="@id/calories_bg" />
+
+    <TextView
+        android:id="@+id/fats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/padding_15"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/fat_progressbar"
+        app:layout_constraintStart_toStartOf="@id/fat_progressbar"
+        app:layout_constraintTop_toTopOf="@id/fat_progressbar"
+        tools:text="@string/_12g" />
+
+    <TextView
+        android:id="@+id/fats_placeholder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/fats"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/fats"
+        app:layout_constraintStart_toStartOf="@id/fats"
+        app:layout_constraintTop_toBottomOf="@id/fats" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

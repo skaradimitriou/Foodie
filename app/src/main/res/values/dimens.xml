@@ -16,6 +16,10 @@
     <dimen name="image_150">150dp</dimen>
     <dimen name="button_56">56dp</dimen>
     <dimen name="margin_20">20dp</dimen>
+    <dimen name="image_40">40dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
+    <dimen name="image_70">70dp</dimen>
+    <dimen name="image_16">16dp</dimen>
 
 
 </resources>
