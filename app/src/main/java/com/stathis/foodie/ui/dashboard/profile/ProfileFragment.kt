@@ -30,8 +30,7 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
          */
 
-        val photo =
-            "https://img.freepik.com/free-photo/handsome-young-businessman-shirt-eyeglasses_85574-6228.jpg?size=626&ext=jpg"
+        val photo = "https://img.freepik.com/free-photo/handsome-young-businessman-shirt-eyeglasses_85574-6228.jpg?size=626&ext=jpg"
         Glide.with(this).load(photo).placeholder(R.color.orange).into(profile_photo)
         profile_username.text = getString(R.string.profile_dummy_username)
         profile_email.text = getString(R.string.profile_dummy_email)

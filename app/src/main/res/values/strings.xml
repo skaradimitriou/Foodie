@@ -3,14 +3,32 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Menu -->
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_profile">Profile</string>
+
+    <!-- Login Activity -->
+    <string name="splash_app_name">Foody\'s</string>
+    <string name="login_screen_sub_txt">Welcome Back!</string>
+    <string name="login_screen_username_hint">Username</string>
+    <string name="login_screen_password_hint">Password</string>
+    <string name="login_screen_forgot_password">Forgot password?</string>
 
     <string name="item_recipe_label">Recipe label</string>
     <string name="profile_dummy_username">username</string>
     <string name="profile_dummy_email">test@test.com</string>
     <string name="my_favorites">My favorites</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
 
+    <!-- Register Activity -->
+    <string name="register_screen_header">Create account</string>
+    <string name="register_screen_sub_txt">and start browsing recipes today!</string>
+    <string name="register_screen_username_hint">Username</string>
+    <string name="register_screen_email_hint">Email</string>
+    <string name="register_screen_password_hint">Password</string>
+    <string name="register_screen_conf_password_hint">Confirm Password</string>
+    <string name="register_btn_hint">Create Account</string>
 
 </resources>

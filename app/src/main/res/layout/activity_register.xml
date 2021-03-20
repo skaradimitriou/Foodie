@@ -4,6 +4,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".ui.register.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/login_background_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@color/black" />
+
+    <View
+        android:id="@+id/black_tint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/register_header_title"
+        style="@style/h1_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_20"
+        android:text="@string/register_screen_header"
+        app:layout_constraintEnd_toEndOf="@id/register_btn"
+        app:layout_constraintStart_toStartOf="@id/register_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/signUpDescriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/register_screen_sub_txt"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/register_btn"
+        app:layout_constraintStart_toStartOf="@id/register_header_title"
+        app:layout_constraintTop_toBottomOf="@+id/register_header_title" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_username_layout"
+        style="@style/OutlineBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_screen_username_hint"
+        app:layout_constraintBottom_toTopOf="@+id/register_email_layout"
+        app:layout_constraintEnd_toEndOf="@id/register_btn"
+        app:layout_constraintStart_toStartOf="@id/register_btn"
+        app:layout_constraintTop_toBottomOf="@+id/signUpDescriptionTextView"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_username_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/profile_icon_white"
+            android:drawablePadding="@dimen/padding_10"
+            android:singleLine='true'
+            android:textColor="@color/white"
+            android:textCursorDrawable="@null" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_email_layout"
+        style="@style/OutlineBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_screen_email_hint"
+        app:layout_constraintBottom_toTopOf="@id/register_pass_layout"
+        app:layout_constraintEnd_toEndOf="@id/register_btn"
+        app:layout_constraintStart_toStartOf="@id/register_btn"
+        app:layout_constraintTop_toBottomOf="@+id/register_username_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_email_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/email_icon"
+            android:drawablePadding="@dimen/padding_10"
+            android:singleLine='true'
+            android:textColor="@color/white"
+            android:textCursorDrawable="@null" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_pass_layout"
+        style="@style/OutlineBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_screen_password_hint"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@id/register_conf_pass_layout"
+        app:layout_constraintEnd_toEndOf="@id/register_btn"
+        app:layout_constraintStart_toStartOf="@id/register_btn"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_pass_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/password_icon"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"
+            android:singleLine='true'
+            android:textColor="@color/white"
+            android:textCursorDrawable="@null" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_conf_pass_layout"
+        style="@style/OutlineBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_screen_conf_password_hint"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@id/register_btn"
+        app:layout_constraintEnd_toEndOf="@id/register_btn"
+        app:layout_constraintStart_toStartOf="@id/register_btn"
+        app:layout_constraintTop_toBottomOf="@+id/register_pass_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_conf_pass_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/password_icon"
+            android:drawablePadding="@dimen/padding_10"
+            android:inputType="textPassword"
+            android:singleLine='true'
+            android:textColor="@color/white"
+            android:textCursorDrawable="@null" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register_btn"
+        style="@style/yellow_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_56"
+        android:layout_marginBottom="@dimen/margin_20"
+        android:text="@string/register_btn_hint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

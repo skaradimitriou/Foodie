@@ -14,6 +14,8 @@
     <dimen name="margin_35">35dp</dimen>
     <dimen name="margin_25">25dp</dimen>
     <dimen name="image_150">150dp</dimen>
+    <dimen name="button_56">56dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
 
 
 </resources>

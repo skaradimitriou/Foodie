@@ -19,7 +19,7 @@ class SplashActivity : AbstractActivity(R.layout.activity_splash) {
 
     override fun init() {
         Handler().postDelayed({
-            startActivity(Intent(this, DashboardActivity::class.java))
+            startActivity(Intent(this, IntroActivity::class.java))
             finish()
         }, 3000)
     }

@@ -23,7 +23,7 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
 
         viewModel.getDataFromRepository(object : RecipeClickListener {
             override fun onRecipeClick(recipe: RecipeMain) {
-                startActivity(Intent(requireContext(),DetailsActivity::class.java)
+                startActivity( Intent(requireContext(), DetailsActivity::class.java)
                         .putExtra("RECIPE", recipe))
             }
         })

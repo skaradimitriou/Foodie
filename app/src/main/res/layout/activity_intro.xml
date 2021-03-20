@@ -6,4 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".ui.intro.IntroActivity">
 
+    <ImageView
+        android:id="@+id/intro_background_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@color/black" />
+
+    <View
+        android:id="@+id/black_tint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/black" />
+
+    <ImageView
+        android:layout_width="@dimen/image_110"
+        android:layout_height="@dimen/image_110"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/intro_login_btn"
+        style="@style/yellow_button"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/login"
+        app:layout_constraintBottom_toTopOf="@id/intro_register_btn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/intro_register_btn"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_56"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:text="@string/register"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:strokeColor="@color/white" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

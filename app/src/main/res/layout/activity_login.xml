@@ -4,6 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".ui.login.LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@color/black" />
+
+    <View
+        android:id="@+id/black_tint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/login_screen_header"
+        style="@style/h1_title"
+        android:textColor="@color/yellow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        android:text="@string/splash_app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/login_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/login_screen_sub_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login_screen_sub_txt"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/login_screen_header"
+        app:layout_constraintTop_toBottomOf="@+id/login_screen_header" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_email_layout"
+        style="@style/OutlineBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_screen_email_hint"
+        app:layout_constraintBottom_toTopOf="@+id/login_password_layout"
+        app:layout_constraintEnd_toEndOf="@id/login_btn"
+        app:layout_constraintStart_toStartOf="@id/login_btn"
+        app:layout_constraintTop_toBottomOf="@+id/login_screen_sub_txt"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/email_icon"
+            android:drawablePadding="@dimen/padding_10"
+            android:singleLine='true'
+            android:textColor="@color/white"
+            android:textCursorDrawable="@null" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_password_layout"
+        style="@style/OutlineBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/login_screen_password_hint"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@id/forgot_pass_btn"
+        app:layout_constraintEnd_toEndOf="@id/login_btn"
+        app:layout_constraintStart_toStartOf="@id/login_btn"
+        app:layout_constraintTop_toBottomOf="@+id/login_email_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/password_icon"
+            android:drawablePadding="@dimen/padding_10"
+            android:inputType="textPassword"
+            android:singleLine='true'
+            android:textColor="@color/white"
+            android:textCursorDrawable="@null" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/forgot_pass_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_5"
+        android:text="@string/login_screen_forgot_password"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/login_btn"
+        app:layout_constraintEnd_toEndOf="@id/login_password_layout"
+        app:layout_constraintTop_toBottomOf="@id/login_password_layout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_btn"
+        style="@style/yellow_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_56"
+        android:layout_marginBottom="20dp"
+        android:text="@string/login"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
