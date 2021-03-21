@@ -20,4 +20,15 @@ object ApiClient {
     fun getRecipes(recipe: String, app_id: String, app_key: String): Call<ResponseModel> {
         return api.getRecipes(recipe, app_id, app_key)
     }
+
+    fun getCustomRecipes(
+        query : String,
+        calories : String,
+        mealType: String,
+        dietType: String,
+        app_id: String,
+        app_key: String
+    ): Call<ResponseModel> {
+        return api.getCustomRecipes(query,calories, mealType, dietType, app_id, app_key)
+    }
 }

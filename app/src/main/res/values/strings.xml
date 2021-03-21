@@ -49,6 +49,10 @@
     <string name="meal_type">Meal Type</string>
     <string name="diet_type">Diet Type</string>
     <string name="good_morning">Good Morning</string>
+    <string name="recipe_results_for">Recipe results for:</string>
+    <string name="meal_type_dummy">Meal Type : Mealtype</string>
+    <string name="diet_type_dummy">Diet Type : Balanced</string>
+    <string name="calorie_range_min_max_value">Calorie range : 350 up to 200 kcal</string>
 
     <!-- Filters Screen -->
     <string-array name="meal_type_options">

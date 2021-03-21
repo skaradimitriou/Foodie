@@ -38,8 +38,8 @@ class FiltersFragment : AbstractFragment(R.layout.fragment_filters) {
 
         find_recipes_floating_btn.setOnClickListener {
             startActivity(Intent(requireContext(), FilterResultsActivity::class.java).also{
-                it.putExtra("KCAL_MIN_VALUE",calories_slider.values[0].toString())
-                it.putExtra("KCAL_MAX_VALUE",calories_slider.values[1].toString())
+                it.putExtra("KCAL_MIN_VALUE",calories_slider.values[0].toDouble())
+                it.putExtra("KCAL_MAX_VALUE",calories_slider.values[1].toDouble())
                 it.putExtra("MEAL_TYPE",meal_type_autocomplete.text.toString())
                 it.putExtra("DIET_TYPE",diet_autocomplete.text.toString())
             })
