@@ -20,4 +20,9 @@
         android:name="com.stathis.foodie.ui.dashboard.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/nav_filter"
+        android:name="com.stathis.foodie.ui.dashboard.filters.FiltersFragment"
+        android:label="fragment_filters"
+        tools:layout="@layout/fragment_filters" />
 </navigation>

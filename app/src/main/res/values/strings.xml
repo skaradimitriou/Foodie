@@ -42,6 +42,29 @@
     <string name="open_recipe">Open recipe</string>
     <string name="chicken_with_soup">Chicken with soup</string>
     <string name="cook_time_dummy">Cook Time: 1h 20 minutes</string>
+    <string name="nav_filters">Filters</string>
+    <string name="filter_screen_subtxt">Enter the data bellow and we\'ll find a recipe for you</string>
+    <string name="filter_screen_header">Find a recipe</string>
+    <string name="calories">Calories</string>
+    <string name="meal_type">Meal Type</string>
+    <string name="diet_type">Diet Type</string>
+    <string name="good_morning">Good Morning</string>
 
+    <!-- Filters Screen -->
+    <string-array name="meal_type_options">
+        <item>Breakfast</item>
+        <item>Snack</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+    </string-array>
+
+    <string-array name="diet_type_options">
+        <item>balanced</item>
+        <item>high-protein</item>
+        <item>high-fiber</item>
+        <item>low-fat</item>
+        <item>low-carb</item>
+        <item>low-sodium</item>
+    </string-array>
 
 </resources>
