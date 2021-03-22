@@ -38,4 +38,39 @@ class TotalNutrientsMainModel(
     val TOCPHA: NutrientModel?,
     val VITK1: NutrientModel?,
     val WATER: NutrientModel?
-) : LocalModel, Parcelable
+) : LocalModel, Parcelable {
+    constructor() : this (
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, ""),
+        NutrientModel("", 0.0, "")
+    )
+}

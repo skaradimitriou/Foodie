@@ -11,4 +11,8 @@ class IngredientModel(
     val foodCategory : String,
     val foodId : String,
     val image : String?
-) : Parcelable
+) : Parcelable {
+    constructor() : this(
+        "",0.0,"","",""
+    )
+}

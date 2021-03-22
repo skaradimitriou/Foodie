@@ -17,4 +17,42 @@ class RecipeModel(
     val totalTime: Double,
     val totalNutrients : TotalNutrientsMainModel
 
-) : LocalModel,Parcelable
+) : LocalModel,Parcelable {
+    constructor() : this(
+            "", "", "", "", emptyList(), emptyList(), 0.0, 0.0, 0.0,
+            TotalNutrientsMainModel(
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, ""),
+                NutrientModel("", 0.0, "")
+            )
+    )
+}

@@ -1,7 +1,9 @@
 package com.stathis.foodie.ui.details
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -14,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_details.*
 class DetailsActivity : AbstractActivity(R.layout.activity_details) {
 
     private lateinit var viewModel: DetailsViewModel
+    private lateinit var recipe: RecipeMain
+    private var isFavorite = false
 
     override fun init() {
         viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
@@ -23,38 +27,47 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
         /*
         As a User, I want to :
 
-        a) be able to view the recipe details
+        a) be able to view the recipe details - DONE
         b) be able to view the ingredients of this recipe
-        c) be able to see the nutritional value of this recipe
-        d) be able to add this recipe to my favorite list
-        e) be able to remove this recipe to my favorite list
+        c) be able to see the nutritional value of this recipe - DONE
+        d) be able to add this recipe to my favorite list - DONE
+        e) be able to remove this recipe to my favorite list - DONE
 
          */
 
-        val item = intent.getParcelableExtra<RecipeMain?>("RECIPE")
-        Log.d("Recipe Item", item.toString())
+        recipe = intent.getParcelableExtra<RecipeMain?>("RECIPE")
+        Log.d("Recipe Item", recipe.toString())
 
-        presentRecipeData(item)
-        viewModel.getCookTime(item.recipe.totalTime)
+        viewModel.isFavoriteRecipe(recipe)
+        presentRecipeData(recipe)
+
+        viewModel.getCookTime(recipe.recipe.totalTime)
 
         share_btn.setOnClickListener {
             Intent(Intent.ACTION_SEND)
                 .setType("text/plain")
                 .putExtra(Intent.EXTRA_SUBJECT, "Check out this recipe!")
-                .putExtra(Intent.EXTRA_TEXT, "I think that you might be interested in ${item.recipe.label}")
-                .putExtra(Intent.EXTRA_STREAM, item.recipe.url)
+                .putExtra(
+                    Intent.EXTRA_TEXT,
+                    "I think that you might be interested in ${recipe.recipe.label}"
+                )
+                .putExtra(Intent.EXTRA_STREAM, recipe.recipe.url)
             startActivity(Intent.createChooser(intent, "Share with"));
         }
 
         like_btn.setOnClickListener {
-            /*
-            Logic : check if favorite. If it is add it if its not remove it
-             */
+            when(isFavorite){
+                true -> viewModel.removeRecipeFromFavorites(recipe)
+                false -> viewModel.addRecipeToFavorites(recipe)
+            }
+
         }
 
         open_recipe_btn.setOnClickListener {
-            startActivity( Intent(this, WebviewActivity::class.java)
-                    .putExtra("URL", item.recipe.url))
+            startActivity(
+                Intent(this, WebviewActivity::class.java)
+                    .putExtra("URL", recipe.recipe.url)
+            )
         }
 
         observeViewModel()
@@ -63,6 +76,29 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
     private fun observeViewModel() {
         viewModel.cookTime.observe(this, Observer {
             recipe_time.text = it
+        })
+
+        viewModel.isFavoriteRecipe.observe(this, Observer {
+            isFavorite = it
+            when (it) {
+                true -> {
+                    like_btn.backgroundTintList = ColorStateList.valueOf(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.red
+                        )
+                    )
+                }
+
+                false -> {
+                    like_btn.backgroundTintList = ColorStateList.valueOf(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.yellow
+                        )
+                    )
+                }
+            }
         })
     }
 
@@ -78,5 +114,8 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
         fats.text = "%.2fg".format(item.recipe.totalNutrients.FAT?.quantity)
     }
 
-    override fun stopped() {}
+    override fun stopped() {
+        viewModel.cookTime.removeObservers(this)
+        viewModel.isFavoriteRecipe.removeObservers(this)
+    }
 }

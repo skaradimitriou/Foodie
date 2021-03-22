@@ -2,10 +2,13 @@ package com.stathis.foodie.ui.details
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.stathis.foodie.models.RecipeMain
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsViewModel : ViewModel() {
 
+    private val repo = DetailsRepository()
+    val isFavoriteRecipe = repo.isFavoriteRecipe
     val cookTime = MutableLiveData<String>()
 
     fun getCookTime(totalTime: Double) {
@@ -23,4 +26,15 @@ class DetailsViewModel : ViewModel() {
         }
     }
 
+    fun isFavoriteRecipe(recipe: RecipeMain) {
+        repo.isFavoriteRecipe(recipe)
+    }
+
+    fun addRecipeToFavorites(recipe: RecipeMain) {
+        repo.addRecipeToFavorites(recipe)
+    }
+
+    fun removeRecipeFromFavorites(recipe: RecipeMain) {
+        repo.removeRecipeFromFavorites(recipe)
+    }
 }
