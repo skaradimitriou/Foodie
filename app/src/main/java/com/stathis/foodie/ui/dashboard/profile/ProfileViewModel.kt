@@ -16,9 +16,9 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
     val adapter = FavoriteAdapter(this)
     private lateinit var callback: RecipeClickListener
 
-    fun getFavoriteData(string: String, callback: RecipeClickListener) {
+    fun getFavoriteData(callback: RecipeClickListener) {
         this.callback = callback
-        repo.getDataFromApi(string)
+        repo.getUserFavorites()
     }
 
     override fun onItemClick(view: View) {
@@ -31,7 +31,7 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
 
     fun observe(owner: LifecycleOwner) {
         data.observe(owner, Observer {
-            adapter.submitList(it.hits)
+            adapter.submitList(it)
         })
     }
 

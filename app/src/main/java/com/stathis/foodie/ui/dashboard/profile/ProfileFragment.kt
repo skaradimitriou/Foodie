@@ -37,7 +37,7 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
         profile_favorites_recycler.adapter = viewModel.adapter
 
-        viewModel.getFavoriteData("chicken", object : RecipeClickListener {
+        viewModel.getFavoriteData( object : RecipeClickListener {
             override fun onRecipeClick(recipe: RecipeMain) {
                 startActivity(
                     Intent(requireContext(), DetailsActivity::class.java)
