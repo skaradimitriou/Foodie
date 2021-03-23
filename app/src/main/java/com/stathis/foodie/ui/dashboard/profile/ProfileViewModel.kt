@@ -1,5 +1,7 @@
 package com.stathis.foodie.ui.dashboard.profile
 
+import android.graphics.Bitmap
+import android.net.Uri
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -13,6 +15,8 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
 
     private val repo = ProfileRepository()
     val data = repo.data
+    val userEmail = repo.userEmail
+    val userImageLink = repo.userImageLink
     val adapter = FavoriteAdapter(this)
     private lateinit var callback: RecipeClickListener
 
@@ -37,5 +41,21 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
 
     fun removeObservers(owner: LifecycleOwner) {
         data.removeObservers(owner)
+    }
+
+    fun saveCameraPhotoToDb(imgBitmap: Bitmap) {
+        repo.saveCameraPhotoToDb(imgBitmap)
+    }
+
+    fun saveGalleryPhotoToDb(imageUri: Uri) {
+        repo.saveGalleryPhotoToDb(imageUri)
+    }
+
+    fun getUserPhoto() {
+        repo.getUserPhoto()
+    }
+
+    fun getUserProfileData() {
+        repo.getUserProfileData()
     }
 }
