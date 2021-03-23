@@ -5,6 +5,12 @@
         android:id="@+id/nav_home"
         android:icon="@drawable/home_icon_white"
         android:title="@string/nav_home" />
+
+    <item
+        android:id="@+id/nav_categories"
+        android:icon="@drawable/categories_icon_white"
+        android:title="Categories" />
+
     <item
         android:id="@+id/nav_search"
         android:icon="@drawable/search_icon_white"

@@ -10,19 +10,28 @@
         android:name="com.stathis.foodie.ui.dashboard.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main"  />
+
     <fragment
         android:id="@+id/nav_search"
         android:name="com.stathis.foodie.ui.dashboard.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.stathis.foodie.ui.dashboard.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/nav_filter"
         android:name="com.stathis.foodie.ui.dashboard.filters.FiltersFragment"
         android:label="fragment_filters"
         tools:layout="@layout/fragment_filters" />
+
+    <fragment
+        android:id="@+id/nav_categories"
+        android:name="com.stathis.foodie.ui.dashboard.categories.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
 </navigation>

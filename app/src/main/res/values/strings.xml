@@ -53,6 +53,7 @@
     <string name="meal_type_dummy">Meal Type : Mealtype</string>
     <string name="diet_type_dummy">Diet Type : Balanced</string>
     <string name="calorie_range_min_max_value">Calorie range : 350 up to 200 kcal</string>
+    <string name="breakfast">Breakfast</string>
 
     <!-- Filters Screen -->
     <string-array name="meal_type_options">
