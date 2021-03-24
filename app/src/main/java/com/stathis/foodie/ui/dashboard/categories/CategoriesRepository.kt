@@ -12,12 +12,12 @@ class CategoriesRepository {
         categories.value = listOf(
             SuggestionItem("Breakfast", R.drawable.breakfast),
             SuggestionItem("Lunch", R.drawable.lunch_icon),
-            SuggestionItem("Soups", R.drawable.soup_icon),
-            SuggestionItem("Salads", R.drawable.salad_icon),
-            SuggestionItem("Desserts", R.drawable.desert_icon),
-            SuggestionItem("Fish", R.drawable.fish_icon),
-            SuggestionItem("Meat", R.drawable.meat_icon),
-            SuggestionItem("Pasta", R.drawable.pasta_icon)
+            SuggestionItem("Soup", R.drawable.soup_icon),
+            SuggestionItem("Salad", R.drawable.salad_icon),
+            SuggestionItem("Dessert", R.drawable.desert_icon),
+            SuggestionItem("Indian", R.drawable.indian_icon),
+            SuggestionItem("Chinese", R.drawable.chinese_icon),
+            SuggestionItem("Italian", R.drawable.pasta_icon)
         )
     }
 }

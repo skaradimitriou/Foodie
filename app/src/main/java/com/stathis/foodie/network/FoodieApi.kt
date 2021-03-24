@@ -24,4 +24,28 @@ interface FoodieApi {
         @Query("app_id") app_id: String,
         @Query("app_key") app_key: String
     ): Call<ResponseModel>
+
+    @GET("search")
+    fun getCuisineTypeResults(
+        @Query("q") query: String,
+        @Query("cuisineType") cuisineType: String,
+        @Query("app_id") app_id: String,
+        @Query("app_key") app_key: String
+    ): Call<ResponseModel>
+
+    @GET("search")
+    fun getMealTypeResults(
+        @Query("q") query: String,
+        @Query("mealType") mealType: String,
+        @Query("app_id") app_id: String,
+        @Query("app_key") app_key: String
+    ): Call<ResponseModel>
+
+    @GET("search")
+    fun getDishTypeResults(
+        @Query("q") query: String,
+        @Query("dishType") dishType: String,
+        @Query("app_id") app_id: String,
+        @Query("app_key") app_key: String
+    ): Call<ResponseModel>
 }

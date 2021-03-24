@@ -22,13 +22,40 @@ object ApiClient {
     }
 
     fun getCustomRecipes(
-        query : String,
-        calories : String,
+        query: String,
+        calories: String,
         mealType: String,
         dietType: String,
         app_id: String,
         app_key: String
     ): Call<ResponseModel> {
-        return api.getCustomRecipes(query,calories, mealType, dietType, app_id, app_key)
+        return api.getCustomRecipes(query, calories, mealType, dietType, app_id, app_key)
+    }
+
+    fun getCuisineTypeResults(
+        query: String,
+        cuisineType: String,
+        app_id: String,
+        app_key: String
+    ): Call<ResponseModel> {
+        return api.getCuisineTypeResults(query, cuisineType, app_id, app_key)
+    }
+
+    fun getMealTypeResults(
+        query: String,
+        mealType: String,
+        app_id: String,
+        app_key: String
+    ): Call<ResponseModel> {
+        return api.getMealTypeResults(query, mealType, app_id, app_key)
+    }
+
+    fun getDishTypeResults(
+        query: String,
+        dishType: String,
+        app_id: String,
+        app_key: String
+    ): Call<ResponseModel> {
+        return api.getDishTypeResults(query, dishType, app_id, app_key)
     }
 }
