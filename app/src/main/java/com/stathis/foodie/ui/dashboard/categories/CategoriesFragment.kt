@@ -8,6 +8,7 @@ import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractFragment
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.SuggestionItemClickListener
+import com.stathis.foodie.models.HomeCategoryItem
 import com.stathis.foodie.models.SuggestionItem
 import com.stathis.foodie.ui.categories.CategoriesResultsActivity
 import kotlinx.android.synthetic.main.fragment_categories.*
@@ -38,6 +39,10 @@ class CategoriesFragment : AbstractFragment(R.layout.fragment_categories) {
             override fun onCategoryClick(category: SuggestionItem) {
                startActivity(Intent(context,CategoriesResultsActivity::class.java)
                    .putExtra("CATEGORY",category.categoryName))
+            }
+
+            override fun onHomeCategoryClick(category: HomeCategoryItem) {
+                // Not a home category
             }
         })
     }

@@ -17,6 +17,7 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
     val data = repo.data
     val userEmail = repo.userEmail
     val userImageLink = repo.userImageLink
+    val username = repo.username
     val adapter = FavoriteAdapter(this)
     private lateinit var callback: RecipeClickListener
 

@@ -60,7 +60,6 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
                 true -> viewModel.removeRecipeFromFavorites(recipe)
                 false -> viewModel.addRecipeToFavorites(recipe)
             }
-
         }
 
         open_recipe_btn.setOnClickListener {

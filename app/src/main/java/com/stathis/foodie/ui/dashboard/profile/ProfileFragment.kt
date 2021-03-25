@@ -47,8 +47,6 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
          */
 
-        profile_username.text = getString(R.string.profile_dummy_username)
-
         viewModel.getUserPhoto()
         viewModel.getUserProfileData()
 
@@ -81,6 +79,10 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
         viewModel.userImageLink.observe(this, Observer {
             Glide.with(this).load(it).into(profile_photo)
+        })
+
+        viewModel.username.observe(this, Observer {
+            profile_username.text = it
         })
     }
 

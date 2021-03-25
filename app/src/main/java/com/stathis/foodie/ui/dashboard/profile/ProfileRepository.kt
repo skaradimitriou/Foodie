@@ -24,6 +24,7 @@ class ProfileRepository {
     private val favoriteRecipeList = mutableListOf<RecipeMain>()
     val userEmail = MutableLiveData<String>()
     val userImageLink = MutableLiveData<String>()
+    val username = MutableLiveData<String>()
 
     fun getUserFavorites(){
         databaseReference.child("users")
@@ -49,6 +50,21 @@ class ProfileRepository {
 
     fun getUserProfileData() {
         userEmail.value =  FirebaseAuth.getInstance().currentUser?.email.toString()
+
+        databaseReference.child("users")
+            .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            .child("userData")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+                    if (p0.exists()) {
+                        username.value = p0.value.toString()
+                    }
+                }
+
+                override fun onCancelled(p0: DatabaseError) {
+                    username.value = null
+                }
+            })
     }
 
     fun savePhotoToDb(string: String) {
@@ -68,8 +84,6 @@ class ProfileRepository {
                         val imgUrl = p0.value.toString()
                         Log.d("URL", imgUrl)
                         userImageLink.postValue(imgUrl)
-                    } else {
-                        userImageLink.postValue(null)
                     }
                 }
 

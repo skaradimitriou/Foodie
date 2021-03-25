@@ -7,7 +7,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractFragment
 import com.stathis.foodie.listeners.RecipeClickListener
+import com.stathis.foodie.listeners.SuggestionItemClickListener
+import com.stathis.foodie.models.HomeCategoryItem
 import com.stathis.foodie.models.RecipeMain
+import com.stathis.foodie.models.SuggestionItem
+import com.stathis.foodie.ui.categories.CategoriesResultsActivity
 import com.stathis.foodie.ui.details.DetailsActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -20,16 +24,14 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
     }
 
     override fun running() {
-        /*
-        Things to do before I consider this screen done:
+        categories_recycler.adapter = viewModel.categoryAdapter
 
-        - Be sure that every element from Zeplin is transfered in the screen
-
-         */
-
-        main_screen_recycler.adapter = viewModel.adapter
+        main_screen_viewpager.adapter = viewModel.adapter
+        main_screen_viewpager.offscreenPageLimit = 3
 
         viewModel.getUsername()
+        viewModel.getHomeCategories()
+        viewModel.createPageTransformer()
 
         viewModel.getTimeOfDay(object : RecipeClickListener {
             override fun onRecipeClick(recipe: RecipeMain) {
@@ -40,14 +42,29 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
             }
         })
 
-        viewModel.observeData(this)
+        viewModel.observeData(this, object : SuggestionItemClickListener {
+            override fun onCategoryClick(category: SuggestionItem) {
+                //Not a category
+            }
+
+            override fun onHomeCategoryClick(category: HomeCategoryItem) {
+                startActivity(
+                    Intent(context, CategoriesResultsActivity::class.java)
+                        .putExtra("CATEGORY", category.categoryName)
+                )
+            }
+        })
 
         viewModel.userGreetingMessage.observe(this, Observer {
             main_screen_header.text = it ?: ""
         })
 
         viewModel.username.observe(this, Observer {
-            home_header_username.text = it.capitalize() ?: ""
+            home_header_username.text = it.capitalize()
+        })
+
+        viewModel.pageTransformer.observe(this, Observer {
+            main_screen_viewpager.setPageTransformer(it)
         })
     }
 

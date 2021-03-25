@@ -46,15 +46,42 @@
         app:layout_constraintBottom_toBottomOf="@id/main_screen_header"
         tools:text="Stathis" />
 
+    <TextView
+        android:id="@+id/main_subheader"
+        android:layout_width="0dp"
+        style="@style/h3_title_bold"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_10"
+        android:text="@string/what_are_you_looking_to_cook_today"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_screen_header" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/main_screen_recycler"
+        android:id="@+id/categories_recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:orientation="horizontal"
+        tools:listitem="@layout/holder_categories_item_row"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_subheader"
+        tools:itemCount="9" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/main_screen_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/padding_80"
+        android:paddingTop="@dimen/margin_20"
+        android:paddingEnd="@dimen/padding_80"
+        android:paddingBottom="@dimen/margin_20"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_screen_header"
-        app:spanCount="2"
-        tools:listitem="@layout/holder_recipe_item_row" />
+        app:layout_constraintTop_toBottomOf="@id/black_tint"
+        tools:itemCount="9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

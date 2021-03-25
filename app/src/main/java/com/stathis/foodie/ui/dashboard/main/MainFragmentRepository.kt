@@ -8,7 +8,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.stathis.foodie.APP_ID
 import com.stathis.foodie.APP_KEY
+import com.stathis.foodie.R
+import com.stathis.foodie.models.HomeCategoryItem
 import com.stathis.foodie.models.ResponseModel
+import com.stathis.foodie.models.SuggestionItem
 import com.stathis.foodie.network.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,6 +22,7 @@ class MainFragmentRepository {
     val databaseReference by lazy { FirebaseDatabase.getInstance().reference }
     val recipes = MutableLiveData<ResponseModel>()
     val username = MutableLiveData<String>()
+    val homeCategories = MutableLiveData<List<HomeCategoryItem>>()
 
     fun getUsername() {
         databaseReference.child("users")
@@ -47,5 +51,18 @@ class MainFragmentRepository {
                 recipes.value = null
             }
         })
+    }
+
+    fun getHomeCategories(){
+        homeCategories.value = listOf(
+            HomeCategoryItem("Breakfast", R.drawable.breakfast),
+            HomeCategoryItem("Lunch", R.drawable.lunch_icon),
+            HomeCategoryItem("Soup", R.drawable.soup_icon),
+            HomeCategoryItem("Salad", R.drawable.salad_icon),
+            HomeCategoryItem("Dessert", R.drawable.desert_icon),
+            HomeCategoryItem("Indian", R.drawable.indian_icon),
+            HomeCategoryItem("Chinese", R.drawable.chinese_icon),
+            HomeCategoryItem("Italian", R.drawable.pasta_icon)
+        )
     }
 }

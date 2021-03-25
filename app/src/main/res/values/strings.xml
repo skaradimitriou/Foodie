@@ -54,6 +54,7 @@
     <string name="diet_type_dummy">Diet Type : Balanced</string>
     <string name="calorie_range_min_max_value">Calorie range : 350 up to 200 kcal</string>
     <string name="breakfast">Breakfast</string>
+    <string name="what_are_you_looking_to_cook_today">What are you looking to cook today?</string>
 
     <!-- Filters Screen -->
     <string-array name="meal_type_options">
