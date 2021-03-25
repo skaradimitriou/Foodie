@@ -10,6 +10,7 @@
     <color name="red" >#e60000</color>
     <color name="orange">#db6400</color>
     <color name="dark_grey">#222831</color>
+    <color name="darker_grey">#121212</color>
     <color name="grey">#666666</color>
     <color name="light_grey">#f1f1f1</color>
     <color name="navy">#16697a</color>
