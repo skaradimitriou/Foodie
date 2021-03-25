@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/search_header"
+        android:id="@+id/main_screen_header"
         style="@style/h2_title_bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -37,12 +37,13 @@
 
     <TextView
         android:id="@+id/home_header_username"
-        style="@style/h2_title_bold"
+        style="@style/h2_title_bold_white"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/padding_10"
-        app:layout_constraintStart_toEndOf="@id/search_header"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/main_screen_header"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/main_screen_header"
         tools:text="Stathis" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -52,7 +53,7 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_header"
+        app:layout_constraintTop_toBottomOf="@id/main_screen_header"
         app:spanCount="2"
         tools:listitem="@layout/holder_recipe_item_row" />
 

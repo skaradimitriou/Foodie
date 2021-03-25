@@ -38,7 +38,6 @@ class IntroActivity : AbstractActivity(R.layout.activity_intro) {
     }
 
     override fun running() {
-        //Glide.with(this).load(R.drawable.cooking_background).into(intro_background_img)
 
         intro_login_btn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -55,5 +54,9 @@ class IntroActivity : AbstractActivity(R.layout.activity_intro) {
         if (user != null) {
             startActivity(Intent(this, DashboardActivity::class.java))
         }
+    }
+
+    override fun onBackPressed() {
+        // You can't go back | Log in to proceed
     }
 }

@@ -26,6 +26,7 @@ class RegisterActivity : AbstractActivity(R.layout.activity_register) {
     override fun running() {
         register_btn.setOnClickListener {
             viewModel.validateUserInput(
+                register_username_input,
                 register_email_input,
                 register_pass_input,
                 register_conf_pass_input

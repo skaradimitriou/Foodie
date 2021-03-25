@@ -9,18 +9,22 @@ import android.os.Build
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.auth.FirebaseAuth
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractFragment
 import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.details.DetailsActivity
+import com.stathis.foodie.ui.intro.IntroActivity
 import kotlinx.android.synthetic.main.bottom_sheet_choose_option.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.logout_item.view.*
 
 
 class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
@@ -36,12 +40,10 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
     override fun running() {
         /*
-        As a User, I want to :
+        Things to be done before moving to "done" :
 
-        a) be able to view my profile info
-        b) be able to view my favorites briefly - DONE
-        c) be able to click my favorites and navigate to them - DONE
-        d) be able to change my profile photo - DONE
+        - Add a generic user photo as default
+        - Implement username functionality
 
          */
 
@@ -54,6 +56,11 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
         profile_photo.setOnClickListener {
             showUploadPhotoOptions()
+        }
+
+        logout.apply {
+            this.logout_icon.setOnClickListener { askForLogout() }
+            this.logout_text.setOnClickListener { askForLogout() }
         }
 
         profile_favorites_recycler.adapter = viewModel.adapter
@@ -73,7 +80,7 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
         })
 
         viewModel.userImageLink.observe(this, Observer {
-            Glide.with(this).load(it).placeholder(R.color.orange).into(profile_photo)
+            Glide.with(this).load(it).into(profile_photo)
         })
     }
 
@@ -154,5 +161,21 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
                 }
             }
         }
+    }
+
+    private fun askForLogout() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Logout")
+        builder.setMessage("Do you want to log out?")
+
+        builder.setPositiveButton("YES") { dialog, which ->
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(requireContext(), IntroActivity::class.java))
+        }
+
+        builder.setNegativeButton("CANCEL") { dialog, which ->
+            dialog.dismiss()
+        }
+        builder.show()
     }
 }

@@ -23,6 +23,12 @@
         <item name="android:padding">@dimen/padding_10</item>
     </style>
 
+    <style name="h2_title_bold_white" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- h3 title -->
     <style name="h3_title_bold" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>

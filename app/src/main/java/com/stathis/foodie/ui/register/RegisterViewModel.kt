@@ -5,13 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterViewModel : ViewModel() {
 
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    val databaseReference by lazy { FirebaseDatabase.getInstance().reference }
     val registerSuccessful = MutableLiveData<Boolean>()
 
     fun validateUserInput(
+        username : TextInputEditText,
         emailField: TextInputEditText,
         passwordField: TextInputEditText,
         passwordConfigField: TextInputEditText
@@ -30,6 +33,7 @@ class RegisterViewModel : ViewModel() {
                     )
                         .addOnCompleteListener { task ->
                             registerSuccessful.value = task.isSuccessful
+                            saveUsernameToDb(username.text.toString())
                         }
                 }
             }
@@ -66,5 +70,11 @@ class RegisterViewModel : ViewModel() {
             return false
         }
         return true
+    }
+
+    fun saveUsernameToDb(username : String){
+        databaseReference.child("users")
+            .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            .child("userData").setValue(username)
     }
 }

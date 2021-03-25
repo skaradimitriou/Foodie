@@ -1,6 +1,11 @@
 package com.stathis.foodie.ui.dashboard.main
 
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.stathis.foodie.APP_ID
 import com.stathis.foodie.APP_KEY
 import com.stathis.foodie.models.ResponseModel
@@ -11,16 +16,35 @@ import retrofit2.Response
 
 class MainFragmentRepository {
 
-    val data = MutableLiveData<ResponseModel>()
+    val databaseReference by lazy { FirebaseDatabase.getInstance().reference }
+    val recipes = MutableLiveData<ResponseModel>()
+    val username = MutableLiveData<String>()
 
-    fun getDataFromApi(){
-        ApiClient.getRecipes("chicken", APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel>{
+    fun getUsername() {
+        databaseReference.child("users")
+            .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            .child("userData")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        username.value = snapshot.value.toString()
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    username.value = null
+                }
+            })
+    }
+
+    fun getMealTypeResults(mealType: String) {
+        ApiClient.getMealTypeResults("", mealType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel>{
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
-                data.value = response.body()
+                recipes.value = response.body()
             }
 
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                data.value = null
+                recipes.value = null
             }
         })
     }

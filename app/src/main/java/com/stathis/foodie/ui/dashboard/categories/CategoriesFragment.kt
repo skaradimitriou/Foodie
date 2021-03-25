@@ -22,6 +22,14 @@ class CategoriesFragment : AbstractFragment(R.layout.fragment_categories) {
     }
 
     override fun running() {
+        /*
+        Things to do before I consider this screen done:
+
+        - Add a title
+        - Add a background image
+
+         */
+
         viewModel.initCategories()
 
         categories_screen_recycler.adapter = viewModel.adapter
