@@ -23,6 +23,10 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
     }
 
     override fun running() {
+        /*
+        - Implement Shimmer lazy loading effect
+         */
+
         kcalMinValue = intent.getDoubleExtra("KCAL_MIN_VALUE", 0.0)
         kcalMaxValue = intent.getDoubleExtra("KCAL_MAX_VALUE", 0.0)
         mealType = intent.getStringExtra("MEAL_TYPE") ?: ""

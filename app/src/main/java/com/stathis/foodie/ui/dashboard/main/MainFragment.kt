@@ -2,8 +2,10 @@ package com.stathis.foodie.ui.dashboard.main
 
 import android.content.Intent
 import android.view.View
+import androidx.core.view.doOnLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractFragment
 import com.stathis.foodie.listeners.RecipeClickListener
@@ -24,6 +26,10 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
     }
 
     override fun running() {
+        /*
+        - Implement Shimmer lazy loading effect
+         */
+
         categories_recycler.adapter = viewModel.categoryAdapter
 
         main_screen_viewpager.adapter = viewModel.adapter

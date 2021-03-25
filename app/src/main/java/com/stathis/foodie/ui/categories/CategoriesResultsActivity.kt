@@ -19,6 +19,10 @@ class CategoriesResultsActivity : AbstractActivity(R.layout.activity_categories_
     }
 
     override fun running() {
+        /*
+        - Implement Shimmer lazy loading effect
+         */
+
         categoryName = intent.getStringExtra("CATEGORY") ?: ""
         category_result_subtxt.text = categoryName
 

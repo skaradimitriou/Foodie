@@ -29,7 +29,7 @@ class SearchFragment : AbstractFragment(R.layout.fragment_search) {
         b) be able to view the results from my query vertically | DONE
         c) be able to click the results and navigate to the recipe screen | DONE
         d) be able to view my recent queries | TO DO
-        e) be able to click to my recent queries and get results
+        e) be able to click to my recent queries and get results | TO DO
 
         Fix the bug that opens the keyboard when you click on searchview
          */

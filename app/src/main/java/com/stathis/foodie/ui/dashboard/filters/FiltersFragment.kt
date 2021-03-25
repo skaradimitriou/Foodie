@@ -19,11 +19,6 @@ class FiltersFragment : AbstractFragment(R.layout.fragment_filters) {
     }
 
     override fun running() {
-        /*
-        As a user I want to be able to select filters by mealType, etc
-        or dishType
-         */
-
         calories_slider.setValues(300.0f, 2700.0f)
 
         val mealTypeOptions = resources.getStringArray(R.array.meal_type_options)

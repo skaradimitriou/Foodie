@@ -23,6 +23,7 @@ import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.details.DetailsActivity
 import com.stathis.foodie.ui.intro.IntroActivity
 import kotlinx.android.synthetic.main.bottom_sheet_choose_option.view.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.logout_item.view.*
 
@@ -44,6 +45,8 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
         - Add a generic user photo as default
         - Implement username functionality
+        - Implement Shimmer lazy loading effect
+        - Add empty favorites indicator if the user has no favorites
 
          */
 
