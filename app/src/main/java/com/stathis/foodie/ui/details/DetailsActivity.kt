@@ -103,7 +103,7 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
 
     private fun presentRecipeData(item: RecipeMain) {
         Glide.with(this).load(item.recipe.image)
-            .placeholder(R.color.orange).into(recipe_details_img)
+            .placeholder(R.mipmap.foodie_app_icon).into(recipe_details_img)
 
         recipe_detail_label.text = item.recipe.label
         recipe_time.text = item.recipe.totalTime.toString()

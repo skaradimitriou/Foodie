@@ -7,6 +7,7 @@ import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.DiffUtilClass
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.models.LocalModel
+import com.stathis.foodie.models.QueryModel
 import com.stathis.foodie.models.RecipeMain
 
 class SearchAdapter(private val callback: ItemClickListener) :
@@ -23,7 +24,8 @@ class SearchAdapter(private val callback: ItemClickListener) :
     }
 
     override fun getItemViewType(position: Int): Int = when (getItem(position)) {
-        is RecipeMain -> R.layout.holder_search_results_item
+        is RecipeMain -> R.layout.holder_search_results_card_item
+        is QueryModel -> R.layout.holder_search_results_item
         else -> R.layout.holder_empty_item
     }
 }

@@ -16,7 +16,7 @@
         <activity android:name=".ui.categories.CategoriesResultsActivity"/>
         <activity android:name=".ui.results.FilterResultsActivity" />
         <activity android:name=".ui.webview.WebviewActivity" />
-        <activity android:name=".ui.dashboard.DashboardActivity" />
+        <activity android:name=".ui.dashboard.DashboardActivity" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.details.DetailsActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.login.LoginActivity" />

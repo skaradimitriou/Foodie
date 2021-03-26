@@ -15,7 +15,7 @@ class HomepageViewHolder(itemView : View, callback : ItemClickListener) : Abstra
         when(data){
             is RecipeMain -> {
                 itemView.recipe_carousel_recipe_name.text = data.recipe.label
-                Glide.with(itemView).load(data.recipe.image).placeholder(R.color.orange)
+                Glide.with(itemView).load(data.recipe.image).placeholder(R.mipmap.foodie_app_icon)
                     .into(itemView.recipe_carousel_img)
             }
         }

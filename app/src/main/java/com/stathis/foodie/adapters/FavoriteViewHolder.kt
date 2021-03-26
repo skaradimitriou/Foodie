@@ -15,7 +15,7 @@ class FavoriteViewHolder(itemView : View,callback : ItemClickListener) : Abstrac
         when(data){
             is RecipeMain -> {
                 itemView.recipe_item_label.text = data.recipe.label
-                Glide.with(itemView).load(data.recipe.image).placeholder(R.color.orange)
+                Glide.with(itemView).load(data.recipe.image).placeholder(R.mipmap.foodie_app_icon)
                     .into(itemView.recipe_item_img)
             }
         }
