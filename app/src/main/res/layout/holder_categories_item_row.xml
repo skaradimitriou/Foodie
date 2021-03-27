@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@color/black" />
+        tools:src="@drawable/fish_icon" />
 
     <TextView
         android:id="@+id/categories_name"
