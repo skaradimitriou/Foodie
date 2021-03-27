@@ -8,6 +8,7 @@ import com.stathis.foodie.adapters.RecipeAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
+import com.stathis.foodie.models.ShimmerModel
 
 class FilterResultsViewModel : ViewModel(), ItemClickListener {
 
@@ -15,6 +16,21 @@ class FilterResultsViewModel : ViewModel(), ItemClickListener {
     val data = repo.data
     private lateinit var callback: RecipeClickListener
     val adapter = RecipeAdapter(this)
+
+    init{
+        adapter.submitList(
+            listOf(
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel()
+            )
+        )
+    }
 
     fun getRecipeData(
         kcalMinValue: Int,
@@ -30,6 +46,7 @@ class FilterResultsViewModel : ViewModel(), ItemClickListener {
     fun observeData(owner: LifecycleOwner) {
         data.observe(owner, Observer {
             adapter.submitList(it.hits)
+            adapter.notifyDataSetChanged()
         })
     }
 

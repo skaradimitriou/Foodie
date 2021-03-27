@@ -23,10 +23,6 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
     }
 
     override fun running() {
-        /*
-        - Implement Shimmer lazy loading effect
-         */
-
         kcalMinValue = intent.getDoubleExtra("KCAL_MIN_VALUE", 0.0)
         kcalMaxValue = intent.getDoubleExtra("KCAL_MAX_VALUE", 0.0)
         mealType = intent.getStringExtra("MEAL_TYPE") ?: ""
@@ -39,6 +35,16 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
 
         results_screen_recycler.adapter = viewModel.adapter
 
+        getData()
+
+        swipe_refresh_layout.setOnRefreshListener {
+            getData()
+        }
+
+        viewModel.observeData(this)
+    }
+
+    private fun getData() {
         viewModel.getRecipeData(
             kcalMinValue.toInt(),
             kcalMaxValue.toInt(),
@@ -50,7 +56,7 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
                         .putExtra("RECIPE", recipe))
                 }
             })
-        viewModel.observeData(this)
+        swipe_refresh_layout.isRefreshing = false
     }
 
     override fun stopped() {

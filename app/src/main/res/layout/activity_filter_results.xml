@@ -1,70 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/swipe_refresh_layout"
     android:layout_height="match_parent"
     tools:context=".ui.results.FilterResultsActivity">
 
-    <View
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:alpha="0.8"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/diet_type_desc"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/filter_screen_header"
-        style="@style/h2_title_bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/padding_10"
-        android:text="@string/recipe_results_for"
-        android:textColor="@color/yellow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:alpha="0.8"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/diet_type_desc"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/calories_min_max_subheader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/padding_10"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filter_screen_header"
-        tools:text="@string/calorie_range_min_max_value" />
+        <TextView
+            android:id="@+id/filter_screen_header"
+            style="@style/h2_title_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding_10"
+            android:text="@string/recipe_results_for"
+            android:textColor="@color/yellow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/meal_type_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/padding_10"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calories_min_max_subheader"
-        tools:text="@string/meal_type_dummy" />
+        <TextView
+            android:id="@+id/calories_min_max_subheader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_10"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter_screen_header"
+            tools:text="@string/calorie_range_min_max_value" />
 
-    <TextView
-        android:id="@+id/diet_type_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/padding_10"
-        android:paddingBottom="@dimen/padding_10"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/meal_type_desc"
-        tools:text="@string/diet_type_dummy" />
+        <TextView
+            android:id="@+id/meal_type_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_10"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calories_min_max_subheader"
+            tools:text="@string/meal_type_dummy" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/results_screen_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/diet_type_desc"
-        app:spanCount="2"
-        tools:listitem="@layout/holder_recipe_item_row" />
+        <TextView
+            android:id="@+id/diet_type_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_10"
+            android:paddingBottom="@dimen/padding_10"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meal_type_desc"
+            tools:text="@string/diet_type_dummy" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/results_screen_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/diet_type_desc"
+            app:spanCount="2"
+            tools:listitem="@layout/holder_recipe_item_row" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -12,27 +12,30 @@ import kotlinx.android.synthetic.main.activity_categories_results.*
 class CategoriesResultsActivity : AbstractActivity(R.layout.activity_categories_results) {
 
     private lateinit var viewModel: CategoriesResultsViewModel
-    private lateinit var categoryName : String
+    private lateinit var categoryName: String
 
     override fun init() {
         viewModel = ViewModelProvider(this).get(CategoriesResultsViewModel::class.java)
     }
 
     override fun running() {
-        /*
-        - Implement Shimmer lazy loading effect
-         */
-
         categoryName = intent.getStringExtra("CATEGORY") ?: ""
         category_result_subtxt.text = categoryName
 
         viewModel.getResults(categoryName.toLowerCase())
         category_result_recycler.adapter = viewModel.adapter
 
-        viewModel.observeData(this, object : RecipeClickListener{
+        swipe_refresh_layout.setOnRefreshListener {
+            viewModel.getResults(categoryName.toLowerCase())
+            swipe_refresh_layout.isRefreshing = false
+        }
+
+        viewModel.observeData(this, object : RecipeClickListener {
             override fun onRecipeClick(recipe: RecipeMain) {
-                startActivity(Intent(this@CategoriesResultsActivity, DetailsActivity::class.java)
-                    .putExtra("RECIPE", recipe))
+                startActivity(
+                    Intent(this@CategoriesResultsActivity, DetailsActivity::class.java)
+                        .putExtra("RECIPE", recipe)
+                )
             }
         })
     }

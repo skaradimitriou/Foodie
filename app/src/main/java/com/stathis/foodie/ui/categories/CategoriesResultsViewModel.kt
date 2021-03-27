@@ -9,6 +9,7 @@ import com.stathis.foodie.adapters.RecipeAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
+import com.stathis.foodie.models.ShimmerModel
 import com.stathis.foodie.models.SuggestionItem
 
 class CategoriesResultsViewModel : ViewModel(), ItemClickListener {
@@ -17,6 +18,21 @@ class CategoriesResultsViewModel : ViewModel(), ItemClickListener {
     val data = repo.data
     val adapter = RecipeAdapter(this)
     private lateinit var callback: RecipeClickListener
+
+    init {
+        adapter.submitList(
+            listOf(
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel(),
+                ShimmerModel()
+            )
+        )
+    }
 
     fun getResults(cuisineType: String) {
         when (cuisineType) {
@@ -32,6 +48,7 @@ class CategoriesResultsViewModel : ViewModel(), ItemClickListener {
 
         data.observe(owner, Observer {
             adapter.submitList(it.hits)
+            adapter.notifyDataSetChanged()
         })
     }
 
