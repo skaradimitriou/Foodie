@@ -1,3 +1,3 @@
 package com.stathis.foodie.models
 
-class ShimmerModel()
+class ShimmerModel() : LocalModel

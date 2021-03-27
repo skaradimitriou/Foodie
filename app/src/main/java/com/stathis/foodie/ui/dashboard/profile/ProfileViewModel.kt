@@ -13,6 +13,7 @@ import com.stathis.foodie.adapters.FavoriteAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
+import com.stathis.foodie.models.ShimmerModel
 
 class ProfileViewModel : ViewModel(), ItemClickListener {
 
@@ -23,6 +24,10 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
     val username = repo.username
     val adapter = FavoriteAdapter(this)
     private lateinit var callback: RecipeClickListener
+
+    init {
+        adapter.submitList(listOf(ShimmerModel(), ShimmerModel(), ShimmerModel()))
+    }
 
     fun getFavoriteData(callback: RecipeClickListener) {
         this.callback = callback

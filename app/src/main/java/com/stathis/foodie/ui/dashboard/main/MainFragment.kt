@@ -2,10 +2,8 @@ package com.stathis.foodie.ui.dashboard.main
 
 import android.content.Intent
 import android.view.View
-import androidx.core.view.doOnLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractFragment
 import com.stathis.foodie.listeners.RecipeClickListener
@@ -35,6 +33,16 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
         main_screen_viewpager.adapter = viewModel.adapter
         main_screen_viewpager.offscreenPageLimit = 3
 
+        getData()
+
+        swipe_refresh_layout.setOnRefreshListener {
+            getData()
+        }
+
+        observeData()
+    }
+
+    private fun getData() {
         viewModel.getUsername()
         viewModel.getHomeCategories()
         viewModel.createPageTransformer()
@@ -48,6 +56,17 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
             }
         })
 
+        swipe_refresh_layout.isRefreshing = false
+    }
+
+    override fun stop() {
+        viewModel.removeObserver(this)
+        viewModel.userGreetingMessage.removeObservers(this)
+        viewModel.username.removeObservers(this)
+        viewModel.pageTransformer.removeObservers(this)
+    }
+
+    fun observeData(){
         viewModel.observeData(this, object : SuggestionItemClickListener {
             override fun onCategoryClick(category: SuggestionItem) {
                 //Not a category
@@ -72,9 +91,5 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
         viewModel.pageTransformer.observe(this, Observer {
             main_screen_viewpager.setPageTransformer(it)
         })
-    }
-
-    override fun stop() {
-        viewModel.removeObserver(this)
     }
 }

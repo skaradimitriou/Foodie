@@ -43,9 +43,9 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
         /*
         Things to be done before moving to "done" :
 
-        - Add a generic user photo as default
-        - Implement username functionality
-        - Implement Shimmer lazy loading effect
+        - Add a generic user photo as default - DONE
+        - Implement username functionality - DONE
+        - Implement Shimmer lazy loading effect - DONE
         - Add empty favorites indicator if the user has no favorites
 
          */

@@ -1,87 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/swipe_refresh_layout"
     android:layout_height="match_parent"
     android:background="@color/light_grey"
     tools:context=".ui.dashboard.main.MainFragment">
 
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image_220"
-        android:background="@drawable/home_screen_background"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/black_tint"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/image_220"
-        android:alpha="0.5"
-        android:background="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_220"
+            android:background="@drawable/home_screen_background"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/main_screen_header"
-        style="@style/h2_title_bold"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_10"
-        android:text="@string/good_morning"
-        android:textColor="@color/yellow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/black_tint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_220"
+            android:alpha="0.5"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/home_header_username"
-        style="@style/h2_title_bold_white"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/main_screen_header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/main_screen_header"
-        tools:text="Stathis" />
+        <TextView
+            android:id="@+id/main_screen_header"
+            style="@style/h2_title_bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_10"
+            android:text="@string/good_morning"
+            android:textColor="@color/yellow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/main_subheader"
-        android:layout_width="0dp"
-        style="@style/h3_title_bold"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_10"
-        android:text="@string/what_are_you_looking_to_cook_today"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_screen_header" />
+        <TextView
+            android:id="@+id/home_header_username"
+            style="@style/h2_title_bold_white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/main_screen_header"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/main_screen_header"
+            tools:text="Stathis" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categories_recycler"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_10"
-        android:orientation="horizontal"
-        tools:listitem="@layout/holder_categories_item_row"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_subheader"
-        tools:itemCount="9" />
+        <TextView
+            android:id="@+id/main_subheader"
+            android:layout_width="0dp"
+            style="@style/h3_title_bold"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_10"
+            android:text="@string/what_are_you_looking_to_cook_today"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_screen_header" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/main_screen_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:paddingStart="@dimen/padding_80"
-        android:paddingTop="@dimen/margin_20"
-        android:paddingEnd="@dimen/padding_80"
-        android:paddingBottom="@dimen/margin_20"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/black_tint"
-        tools:itemCount="9" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categories_recycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:orientation="horizontal"
+            tools:listitem="@layout/holder_categories_item_row"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_subheader"
+            tools:itemCount="9" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/main_screen_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/padding_80"
+            android:paddingTop="@dimen/margin_20"
+            android:paddingEnd="@dimen/padding_80"
+            android:paddingBottom="@dimen/margin_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/black_tint"
+            tools:itemCount="9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

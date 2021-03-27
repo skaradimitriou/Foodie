@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingStart="@dimen/padding_10"
-    android:paddingEnd="@dimen/padding_10"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:paddingEnd="@dimen/padding_10">
 
     <ImageView
         android:id="@+id/recipe_item_img"
@@ -14,7 +13,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/orange" />
+        android:background="@color/grey" />
 
     <TextView
         android:id="@+id/recipe_item_label"
@@ -25,6 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recipe_item_img"
-        tools:text="@string/item_recipe_label" />
+        android:background="@color/grey" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.facebook.shimmer.ShimmerFrameLayout>

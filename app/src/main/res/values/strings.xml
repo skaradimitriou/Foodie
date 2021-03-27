@@ -73,5 +73,6 @@
         <item>low-sodium</item>
     </string-array>
     <string name="toast_fill_all_fields">Please fill all the fields</string>
+    <string name="food_categories">Food Categories</string>
 
 </resources>

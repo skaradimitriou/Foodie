@@ -16,6 +16,7 @@ import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.listeners.SuggestionItemClickListener
 import com.stathis.foodie.models.HomeCategoryItem
 import com.stathis.foodie.models.RecipeMain
+import com.stathis.foodie.models.ShimmerModel
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.util.*
 
@@ -32,12 +33,17 @@ class MainFragmentViewModel : ViewModel(), ItemClickListener {
     val categoryAdapter = CategoriesAdapter(this)
     val pageTransformer = MutableLiveData<CompositePageTransformer>()
 
+    init{
+        adapter.submitList(listOf(ShimmerModel(), ShimmerModel(), ShimmerModel()))
+    }
+
     fun observeData(owner: LifecycleOwner, categoryCallback : SuggestionItemClickListener) {
         this.categoryCallback = categoryCallback
 
         recipes.observe(owner, Observer {
             Log.d("data is", "data is $it")
             adapter.submitList(it.hits)
+            adapter.notifyDataSetChanged()
         })
 
         categories.observe(owner, Observer {
@@ -48,6 +54,7 @@ class MainFragmentViewModel : ViewModel(), ItemClickListener {
 
     fun removeObserver(owner: LifecycleOwner) {
         recipes.removeObservers(owner)
+        categories.removeObservers(owner)
     }
 
     fun getTimeOfDay(callback: RecipeClickListener) {
