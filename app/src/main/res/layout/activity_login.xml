@@ -8,10 +8,11 @@
     tools:context=".ui.login.LoginActivity">
 
     <ImageView
+        android:id="@+id/intro_background_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@color/black" />
+        android:src="@drawable/foodie_app_background" />
 
     <View
         android:id="@+id/black_tint"

@@ -13,6 +13,7 @@
     <color name="darker_grey">#121212</color>
     <color name="grey">#666666</color>
     <color name="light_grey">#f1f1f1</color>
+    <color name="medium_grey">#999999</color>
     <color name="navy">#16697a</color>
     <color name="yellow_sft">#ffa62b</color>
 

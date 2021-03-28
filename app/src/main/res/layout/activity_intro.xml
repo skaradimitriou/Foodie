@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@color/black" />
+        android:src="@drawable/foodie_app_background" />
 
     <View
         android:id="@+id/black_tint"
@@ -24,7 +24,7 @@
         android:layout_width="@dimen/image_110"
         android:layout_height="@dimen/image_110"
         android:layout_marginTop="100dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@mipmap/foodie_app_icon_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -19,14 +19,15 @@ import java.io.ByteArrayOutputStream
 
 class ProfileRepository {
 
-    private val databaseReference : DatabaseReference by lazy { FirebaseDatabase.getInstance().reference }
+    private val databaseReference: DatabaseReference by lazy { FirebaseDatabase.getInstance().reference }
     val data = MutableLiveData<List<RecipeMain>>()
+    val emptyFavorites = MutableLiveData<Boolean>()
     private val favoriteRecipeList = mutableListOf<RecipeMain>()
     val userEmail = MutableLiveData<String>()
     val userImageLink = MutableLiveData<String>()
     val username = MutableLiveData<String>()
 
-    fun getUserFavorites(){
+    fun getUserFavorites() {
         databaseReference.child("users")
             .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
             .child("favoriteRecipeList")
@@ -36,6 +37,7 @@ class ProfileRepository {
                 }
 
                 override fun onDataChange(p0: DataSnapshot) {
+                    favoriteRecipeList.clear()
                     if (p0.exists()) {
                         p0.children.forEach {
                             val fav = it.getValue(RecipeMain::class.java)
@@ -43,13 +45,16 @@ class ProfileRepository {
                             Log.d("it", it.toString())
                         }
                         data.value = favoriteRecipeList
+                        emptyFavorites.value = false
+                    } else {
+                        emptyFavorites.value = true
                     }
                 }
             })
     }
 
     fun getUserProfileData() {
-        userEmail.value =  FirebaseAuth.getInstance().currentUser?.email.toString()
+        userEmail.value = FirebaseAuth.getInstance().currentUser?.email.toString()
 
         databaseReference.child("users")
             .child(FirebaseAuth.getInstance().currentUser?.uid.toString())

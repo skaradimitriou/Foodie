@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@color/darker_grey" />
+        android:src="@drawable/foodie_app_background" />
 
     <View
         android:id="@+id/black_tint"

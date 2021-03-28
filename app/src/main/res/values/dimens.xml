@@ -27,5 +27,6 @@
     <dimen name="margin_50">50dp</dimen>
     <dimen name="image_50">50dp</dimen>
     <dimen name="padding_80">80dp</dimen>
+    <dimen name="image_80">80dp</dimen>
 
 </resources>

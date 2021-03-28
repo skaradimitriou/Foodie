@@ -40,16 +40,6 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
     }
 
     override fun running() {
-        /*
-        Things to be done before moving to "done" :
-
-        - Add a generic user photo as default - DONE
-        - Implement username functionality - DONE
-        - Implement Shimmer lazy loading effect - DONE
-        - Add empty favorites indicator if the user has no favorites
-
-         */
-
         viewModel.getUserPhoto()
         viewModel.getUserProfileData()
 

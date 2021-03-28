@@ -74,5 +74,7 @@
     </string-array>
     <string name="toast_fill_all_fields">Please fill all the fields</string>
     <string name="food_categories">Food Categories</string>
+    <string name="no_favorites_found">No favorites found</string>
+    <string name="no_favorites_desc">Once you add a recipe as a favorite,\n it will show up here</string>
 
 </resources>

@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import com.stathis.foodie.adapters.FavoriteAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
+import com.stathis.foodie.models.EmptyFavoriteModel
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.models.ShimmerModel
 
@@ -19,6 +20,7 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
 
     private val repo = ProfileRepository()
     val data = repo.data
+    val emptyFavorites = repo.emptyFavorites
     val userEmail = repo.userEmail
     val userImageLink = repo.userImageLink
     val username = repo.username
@@ -45,6 +47,17 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
     fun observe(owner: LifecycleOwner) {
         data.observe(owner, Observer {
             adapter.submitList(it)
+            adapter.notifyDataSetChanged()
+        })
+
+        emptyFavorites.observe(owner, Observer{
+            when(it){
+                true -> {
+                    adapter.submitList(listOf(EmptyFavoriteModel()))
+                    adapter.notifyDataSetChanged()
+                }
+                false -> Unit
+            }
         })
     }
 
