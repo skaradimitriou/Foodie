@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/orange</item>
     </style>
 
     <!-- Headings -->
@@ -42,7 +43,6 @@
     </style>
 
     <!-- Buttons -->
-
     <style name="yellow_button" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:height">56dp</item>
         <item name="android:layout_marginStart">20dp</item>
@@ -54,8 +54,7 @@
         <item name="cornerRadius">20dp</item>
     </style>
 
-    <!-- Inputs -->
-
+    <!-- Input Texts -->
     <style name="OutlineBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
@@ -65,5 +64,4 @@
         <item name="errorEnabled">true</item>
         <item name="hintTextColor">@color/white</item>
     </style>
-
 </resources>
