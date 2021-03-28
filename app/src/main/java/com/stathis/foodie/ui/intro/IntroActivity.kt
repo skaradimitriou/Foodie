@@ -21,15 +21,7 @@ class IntroActivity : AbstractActivity(R.layout.activity_intro) {
         viewModel = ViewModelProvider(this).get(IntroViewModel::class.java)
     }
 
-    override fun init() {
-        /*
-        As a User, I want to :
-
-        a) be able to navigate to login/ register screens
-        c) be able to auto-login if I am already logged in
-
-     */
-    }
+    override fun init() {}
 
     override fun onStart() {
         super.onStart()
@@ -38,7 +30,6 @@ class IntroActivity : AbstractActivity(R.layout.activity_intro) {
     }
 
     override fun running() {
-
         intro_login_btn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }

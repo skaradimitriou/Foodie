@@ -21,6 +21,7 @@
         android:background="@color/black" />
 
     <ImageView
+        android:id="@+id/intro_app_img"
         android:layout_width="@dimen/image_110"
         android:layout_height="@dimen/image_110"
         android:layout_marginTop="100dp"
@@ -28,6 +29,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/splash_screen_logo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_50"
+        android:paddingStart="@dimen/padding_80"
+        android:paddingEnd="@dimen/padding_80"
+        android:src="@drawable/foodie_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/intro_app_img"
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/intro_login_btn"
