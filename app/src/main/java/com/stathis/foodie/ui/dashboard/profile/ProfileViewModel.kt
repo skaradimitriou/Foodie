@@ -60,6 +60,7 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
 
     fun removeObservers(owner: LifecycleOwner) {
         data.removeObservers(owner)
+        emptyFavorites.removeObservers(owner)
     }
 
     fun saveCameraPhotoToDb(imgBitmap: Bitmap) {

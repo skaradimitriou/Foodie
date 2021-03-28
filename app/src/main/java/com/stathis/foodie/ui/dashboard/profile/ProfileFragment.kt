@@ -81,6 +81,9 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
     override fun stop() {
         viewModel.removeObservers(this)
+        viewModel.userEmail.removeObservers(this)
+        viewModel.userImageLink.removeObservers(this)
+        viewModel.username.removeObservers(this)
     }
 
     private fun showUploadPhotoOptions() {

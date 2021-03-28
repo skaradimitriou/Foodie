@@ -55,6 +55,7 @@ class SearchViewModel : ViewModel(), ItemClickListener {
     fun removeObservers(owner: LifecycleOwner) {
         data.removeObservers(owner)
         recentQueries.removeObservers(owner)
+        emptyQueries.removeObservers(owner)
     }
 
     override fun onItemClick(view: View) {

@@ -11,7 +11,6 @@ import com.stathis.foodie.APP_KEY
 import com.stathis.foodie.R
 import com.stathis.foodie.models.HomeCategoryItem
 import com.stathis.foodie.models.ResponseModel
-import com.stathis.foodie.models.SuggestionItem
 import com.stathis.foodie.network.ApiClient
 import retrofit2.Call
 import retrofit2.Callback

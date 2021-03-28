@@ -33,7 +33,6 @@ class FiltersFragment : AbstractFragment(R.layout.fragment_filters) {
         diet_autocomplete.setAdapter(dietTypeAdapter)
 
         find_recipes_floating_btn.setOnClickListener {
-
             when (viewModel.checkIfValid(
                 calories_slider.values[0].toString(),
                 calories_slider.values[1].toString(),

@@ -39,8 +39,6 @@ class SearchFragment : AbstractFragment(R.layout.fragment_search) {
                 Log.d("HELLO", query)
 
                 viewModel.addQueryToDb(QueryModel(query!!))
-
-                // The user searches for that query so we need to call the api for results
                 callApiForResuls(query)
                 return true
             }

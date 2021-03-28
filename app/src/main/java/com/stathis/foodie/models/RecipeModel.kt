@@ -1,6 +1,7 @@
 package com.stathis.foodie.models
 
 import android.os.Parcelable
+import com.google.firebase.database.PropertyName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -15,6 +16,8 @@ class RecipeModel(
     val calories: Double,
     val totalWegiht: Double,
     val totalTime: Double,
+
+    @PropertyName("totalNutrients")
     val totalNutrients : TotalNutrientsMainModel
 
 ) : LocalModel,Parcelable {

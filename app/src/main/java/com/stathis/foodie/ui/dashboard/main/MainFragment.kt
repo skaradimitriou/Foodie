@@ -24,10 +24,6 @@ class MainFragment : AbstractFragment(R.layout.fragment_main) {
     }
 
     override fun running() {
-        /*
-        - Implement Shimmer lazy loading effect
-         */
-
         categories_recycler.adapter = viewModel.categoryAdapter
 
         main_screen_viewpager.adapter = viewModel.adapter

@@ -23,7 +23,7 @@
                 android:id="@+id/no_query_img"
                 android:layout_width="@dimen/image_80"
                 android:layout_height="@dimen/image_80"
-                android:background="@drawable/heart_icon"
+                android:background="@drawable/search_icon_dark_grey"
                 android:backgroundTint="@color/medium_grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
