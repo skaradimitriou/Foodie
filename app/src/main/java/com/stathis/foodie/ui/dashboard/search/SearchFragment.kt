@@ -24,18 +24,6 @@ class SearchFragment : AbstractFragment(R.layout.fragment_search) {
     }
 
     override fun running() {
-        /*
-        As a User, I want to :
-
-        a) be able to search for a recipe  | DONE
-        b) be able to view the results from my query vertically | DONE
-        c) be able to click the results and navigate to the recipe screen | DONE
-        d) be able to view my recent queries | DONE
-        e) be able to click to my recent queries and get results | TO DO
-
-        Fix the bug that opens the keyboard when you click on searchview
-         */
-
         viewModel.getRecentUserQueries()
 
         search_searchbar.setOnClickListener {

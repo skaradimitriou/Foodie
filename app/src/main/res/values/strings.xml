@@ -76,5 +76,7 @@
     <string name="food_categories">Food Categories</string>
     <string name="no_favorites_found">No favorites found</string>
     <string name="no_favorites_desc">Once you add a recipe as a favorite,\n it will show up here</string>
+    <string name="no_query_header">No recent queries found</string>
+    <string name="no_query_desc">Once you search something,\n it will show up here</string>
 
 </resources>

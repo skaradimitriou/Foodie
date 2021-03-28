@@ -8,6 +8,7 @@ import com.stathis.foodie.adapters.SearchAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.QueryClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
+import com.stathis.foodie.models.EmptyModel
 import com.stathis.foodie.models.QueryModel
 import com.stathis.foodie.models.RecipeMain
 
@@ -16,8 +17,9 @@ class SearchViewModel : ViewModel(), ItemClickListener {
     private val repo = SearchRepository()
     val data = repo.data
     val recentQueries = repo.recentQueries
+    val emptyQueries = repo.emptyQueries
     private lateinit var callback: RecipeClickListener
-    private lateinit var queryCallback : QueryClickListener
+    private lateinit var queryCallback: QueryClickListener
     val adapter = SearchAdapter(this)
 
     fun getDataFromRepository(query: String, callback: RecipeClickListener) {
@@ -25,15 +27,28 @@ class SearchViewModel : ViewModel(), ItemClickListener {
         repo.getDataFromApi(query)
     }
 
-    fun observeData(owner: LifecycleOwner, queryCallback : QueryClickListener) {
+    fun observeData(owner: LifecycleOwner, queryCallback: QueryClickListener) {
         this.queryCallback = queryCallback
 
         data.observe(owner, Observer {
-            adapter.submitList(it.hits)
+            it?.let {
+                adapter.submitList(it.hits)
+                adapter.notifyDataSetChanged()
+            }
         })
 
         recentQueries.observe(owner, Observer {
-            adapter.submitList(it)
+            it?.let { adapter.submitList(it) }
+        })
+
+        emptyQueries.observe(owner, Observer {
+            when(it){
+                true -> {
+                    adapter.submitList(listOf(EmptyModel()))
+                    adapter.notifyDataSetChanged()
+                }
+                false -> Unit
+            }
         })
     }
 

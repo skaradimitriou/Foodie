@@ -19,6 +19,7 @@ class SearchRepository {
 
     private val databaseReference by lazy { FirebaseDatabase.getInstance().reference }
     val data = MutableLiveData<ResponseModel>()
+    val emptyQueries = MutableLiveData<Boolean>()
     val recentQueriesList = mutableListOf<QueryModel>()
     val recentQueries = MutableLiveData<List<QueryModel>>()
 
@@ -26,6 +27,7 @@ class SearchRepository {
         ApiClient.getRecipes(query, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 data.value = response.body()
+                emptyQueries.value = false
             }
 
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
@@ -57,8 +59,11 @@ class SearchRepository {
                             val query = it.getValue(QueryModel::class.java)
                             recentQueriesList.add(query!!)
                         }
+
+                        recentQueries.value = recentQueriesList
+                    } else {
+                        emptyQueries.value = true
                     }
-                    recentQueries.value = recentQueriesList
                 }
             })
     }

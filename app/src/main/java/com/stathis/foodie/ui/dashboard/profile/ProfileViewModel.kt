@@ -4,15 +4,12 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
 import com.stathis.foodie.adapters.FavoriteAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
-import com.stathis.foodie.models.EmptyFavoriteModel
+import com.stathis.foodie.models.EmptyModel
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.models.ShimmerModel
 
@@ -53,7 +50,7 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
         emptyFavorites.observe(owner, Observer{
             when(it){
                 true -> {
-                    adapter.submitList(listOf(EmptyFavoriteModel()))
+                    adapter.submitList(listOf(EmptyModel()))
                     adapter.notifyDataSetChanged()
                 }
                 false -> Unit
