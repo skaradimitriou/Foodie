@@ -3,23 +3,25 @@ This is a recipe app that lets you search for recipe in various ways through an 
 
 ## Main Goal
 
-This app was developed as a side project. 
-The Users of this application can :
-• Sign-up (Register) & Sign-in (Login)
-• Search recipes by recipe categories (meal type, dish type)
-• Find recipes by filtering by meal type, dish type and calorie range (min - max)
-• Upload user photo to profile
-• Add / Remove a recipe to favorites
+This app was developed as a side project. <br/>
+The Users of this application can : <br/>
+• Sign-up (Register) & Sign-in (Login) <br/>
+• Search recipes by recipe categories (meal type, dish type) <br/>
+• Find recipes by filtering by meal type, dish type and calorie range (min - max) <br/>
+• Upload user photo to profile <br/>
+• Add / Remove a recipe to favorites <br/>
 
-Other implementations:
-• Personalised user greeting with their name according to what hour is it on home screen
+<br/>
+
+Other implementations: <br/>
+• Personalised user greeting with their name according to what hour is it on home screen <br/>
 • Personalised recipe results on home screen according to what hour is it
 
 ### Ideas for further development 
 
-a) Integrate Onboarding Screens
-b) Allow users to edit their profile data
-c) Allow users to have friends
+a) Integrate Onboarding Screens <br/>
+b) Allow users to edit their profile data <br/>
+c) Allow users to have friends <br/>
 
 ### Programming Language 
 
