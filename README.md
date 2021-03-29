@@ -37,6 +37,6 @@ Model - View - ViewModel (MVVM)
 ### Libraries
 [Retrofit](https://square.github.io/retrofit/) <br/>
 [Glide](https://github.com/bumptech/glide) <br/>
-[Gson](https://github.com/google/gson) <br/
-[Firebase](https://firebase.google.com/) Authentication | Realtime Database | Storage <br>
+[Gson](https://github.com/google/gson) <br/>
+[Firebase](https://firebase.google.com/) Authentication | Realtime Database | Storage <br/>
 [Shimmer for Android](https://github.com/facebook/shimmer-android) Shimmer Effect while we wait for the data from the API
