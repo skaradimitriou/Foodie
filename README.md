@@ -17,6 +17,12 @@ Other implementations: <br/>
 • Personalised user greeting with their name according to what hour is it on home screen <br/>
 • Personalised recipe results on home screen according to what hour is it
 
+### Next Sprint Tasks
+a) Allow users to reset their password
+b) Allow users to edit their profile data <br/>
+c) Add a favorite counter in the profile screen </br>
+d) Research how a search with filters can be implemented for the Search Screen
+
 ### Ideas for further development 
 
 a) Integrate Onboarding Screens <br/>
