@@ -53,17 +53,30 @@ class SearchRepository {
                 }
 
                 override fun onDataChange(p0: DataSnapshot) {
-                    if (p0.exists()) {
-                        recentQueriesList.clear()
-                        p0.children.forEach {
-                            val query = it.getValue(QueryModel::class.java)
-                            recentQueriesList.add(query!!)
+                    when(p0.exists()){
+                        true -> {
+                            recentQueriesList.clear()
+                            p0.children.forEach {
+                                val query = it.getValue(QueryModel::class.java)
+                                recentQueriesList.add(query!!)
+                            }
+
+                            recentQueries.value = recentQueriesList
                         }
 
-                        recentQueries.value = recentQueriesList
-                    } else {
-                        emptyQueries.value = true
+                        false -> emptyQueries.value = true
                     }
+//                    if (p0.exists()) {
+//                        recentQueriesList.clear()
+//                        p0.children.forEach {
+//                            val query = it.getValue(QueryModel::class.java)
+//                            recentQueriesList.add(query!!)
+//                        }
+//
+//                        recentQueries.value = recentQueriesList
+//                    } else {
+//                        emptyQueries.value = true
+//                    }
                 }
             })
     }

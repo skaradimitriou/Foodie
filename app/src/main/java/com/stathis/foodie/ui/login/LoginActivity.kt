@@ -17,13 +17,6 @@ class LoginActivity : AbstractActivity(R.layout.activity_login) {
 
     override fun init() {
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
-        /*
-        As a User, I want to :
-
-        a) be able to login to my account
-
-        */
     }
 
     override fun running() {
@@ -53,8 +46,6 @@ class LoginActivity : AbstractActivity(R.layout.activity_login) {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            startActivity(Intent(this, DashboardActivity::class.java))
-        }
+        user?.let { startActivity(Intent(this, DashboardActivity::class.java)) }
     }
 }

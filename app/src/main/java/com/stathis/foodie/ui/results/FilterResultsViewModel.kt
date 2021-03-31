@@ -56,9 +56,7 @@ class FilterResultsViewModel : ViewModel(), ItemClickListener {
 
     override fun onItemClick(view: View) {
         when (view.tag) {
-            is RecipeMain -> {
-                callback.onRecipeClick(view.tag as RecipeMain)
-            }
+            is RecipeMain -> callback.onRecipeClick(view.tag as RecipeMain)
         }
     }
 }

@@ -15,12 +15,6 @@ class RegisterActivity : AbstractActivity(R.layout.activity_register) {
 
     override fun init() {
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
-        /*
-        As a User, I want to :
-
-        a) be able to create a new account to the app
-
-        */
     }
 
     override fun running() {
@@ -49,5 +43,7 @@ class RegisterActivity : AbstractActivity(R.layout.activity_register) {
         })
     }
 
-    override fun stopped() {}
+    override fun stopped() {
+        viewModel.registerSuccessful.removeObservers(this)
+    }
 }

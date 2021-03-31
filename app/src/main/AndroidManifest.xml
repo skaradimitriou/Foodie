@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/foodie_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.editProfile.EditProfileActivity"></activity>
+        <activity android:name=".ui.onboarding.OnboardingActivity" />
         <activity android:name=".ui.categories.CategoriesResultsActivity" />
         <activity android:name=".ui.results.FilterResultsActivity" />
         <activity android:name=".ui.webview.WebviewActivity" />

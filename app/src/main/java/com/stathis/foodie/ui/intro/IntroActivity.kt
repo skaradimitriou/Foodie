@@ -42,9 +42,7 @@ class IntroActivity : AbstractActivity(R.layout.activity_intro) {
     override fun stopped() {}
 
     private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            startActivity(Intent(this, DashboardActivity::class.java))
-        }
+        user?.let { startActivity(Intent(this, DashboardActivity::class.java)) }
     }
 
     override fun onBackPressed() {

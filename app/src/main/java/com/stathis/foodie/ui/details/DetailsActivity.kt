@@ -24,17 +24,6 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
     }
 
     override fun running() {
-        /*
-        As a User, I want to :
-
-        a) be able to view the recipe details - DONE
-        b) be able to view the ingredients of this recipe
-        c) be able to see the nutritional value of this recipe - DONE
-        d) be able to add this recipe to my favorite list - DONE
-        e) be able to remove this recipe to my favorite list - DONE
-
-         */
-
         recipe = intent.getParcelableExtra<RecipeMain?>("RECIPE")
         Log.d("Recipe Item", recipe.toString())
 

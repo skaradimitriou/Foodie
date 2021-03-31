@@ -23,7 +23,7 @@ import java.util.*
 class MainFragmentViewModel : ViewModel(), ItemClickListener {
 
     private lateinit var callback: RecipeClickListener
-    private lateinit var categoryCallback : SuggestionItemClickListener
+    private lateinit var categoryCallback: SuggestionItemClickListener
     private val repo = MainFragmentRepository()
     val recipes = repo.recipes
     val username = repo.username
@@ -33,11 +33,11 @@ class MainFragmentViewModel : ViewModel(), ItemClickListener {
     val categoryAdapter = CategoriesAdapter(this)
     val pageTransformer = MutableLiveData<CompositePageTransformer>()
 
-    init{
+    init {
         adapter.submitList(listOf(ShimmerModel(), ShimmerModel(), ShimmerModel()))
     }
 
-    fun observeData(owner: LifecycleOwner, categoryCallback : SuggestionItemClickListener) {
+    fun observeData(owner: LifecycleOwner, categoryCallback: SuggestionItemClickListener) {
         this.categoryCallback = categoryCallback
 
         recipes.observe(owner, Observer {
@@ -47,7 +47,7 @@ class MainFragmentViewModel : ViewModel(), ItemClickListener {
         })
 
         categories.observe(owner, Observer {
-            Log.d("home categories","home categories : $it")
+            Log.d("home categories", "home categories : $it")
             categoryAdapter.submitList(it)
         })
     }
@@ -82,19 +82,14 @@ class MainFragmentViewModel : ViewModel(), ItemClickListener {
         repo.getUsername()
     }
 
-    fun getHomeCategories(){
+    fun getHomeCategories() {
         repo.getHomeCategories()
     }
 
     override fun onItemClick(view: View) {
         when (view.tag) {
-            is RecipeMain -> {
-                callback.onRecipeClick(view.tag as RecipeMain)
-            }
-
-            is HomeCategoryItem -> {
-                categoryCallback.onHomeCategoryClick(view.tag as HomeCategoryItem)
-            }
+            is RecipeMain ->  callback.onRecipeClick(view.tag as RecipeMain)
+            is HomeCategoryItem -> categoryCallback.onHomeCategoryClick(view.tag as HomeCategoryItem)
         }
     }
 
