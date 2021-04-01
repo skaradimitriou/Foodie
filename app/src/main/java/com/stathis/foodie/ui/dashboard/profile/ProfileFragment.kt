@@ -21,6 +21,7 @@ import com.stathis.foodie.abstraction.AbstractFragment
 import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.details.DetailsActivity
+import com.stathis.foodie.ui.editProfile.EditProfileActivity
 import com.stathis.foodie.ui.intro.IntroActivity
 import kotlinx.android.synthetic.main.bottom_sheet_choose_option.view.*
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -47,6 +48,10 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
 
         profile_photo.setOnClickListener {
             showUploadPhotoOptions()
+        }
+
+        edit_profile_btn.setOnClickListener {
+            startActivity(Intent(requireContext(),EditProfileActivity::class.java))
         }
 
         logout.apply {

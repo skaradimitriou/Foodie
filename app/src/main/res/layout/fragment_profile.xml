@@ -7,15 +7,28 @@
     android:background="@color/light_grey"
     tools:context=".ui.dashboard.profile.ProfileFragment">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/edit_profile_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_20"
+        android:background="@drawable/circle_black"
+        android:backgroundTint="@color/medium_grey"
+        android:padding="@dimen/padding_5"
+        android:src="@drawable/edit_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <include
         android:id="@+id/logout"
-        android:layout_height="wrap_content"
+        layout="@layout/logout_item"
         android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_10"
         app:layout_constraintEnd_toEndOf="parent"
-        layout="@layout/logout_item"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_photo"
@@ -72,6 +85,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_favorites_title"
         tools:listitem="@layout/holder_favorite_item" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
