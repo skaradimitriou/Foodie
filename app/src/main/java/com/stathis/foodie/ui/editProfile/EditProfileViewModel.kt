@@ -10,7 +10,7 @@ import com.google.firebase.database.ValueEventListener
 
 class EditProfileViewModel : ViewModel() {
 
-
+    val auth = FirebaseAuth.getInstance()
     val database by lazy { FirebaseDatabase.getInstance().reference }
     val isEditable = MutableLiveData<Boolean>()
     val userEmail = MutableLiveData<String>()
@@ -25,7 +25,7 @@ class EditProfileViewModel : ViewModel() {
             .child("userData")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(p0: DataSnapshot) {
-                    when(p0.exists()){
+                    when (p0.exists()) {
                         true -> username.value = p0.value.toString()
                         false -> Unit
                     }
@@ -42,18 +42,23 @@ class EditProfileViewModel : ViewModel() {
         isEditable.value = editableModeOn
     }
 
-    fun saveUserData(username : String, email : String) {
-            saveUsernameToDb(username)
-//            saveEmailToDb(email)
-    }
-
-    fun saveUsernameToDb(username: String){
+    fun saveUsernameToDb(username: String) {
         database.child("users")
             .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
             .child("userData").setValue(username)
+        getUserData()
     }
 
-    fun saveEmailToDb(email: String){
-
+    fun saveEmailToDb(oldEmail: String, userPassword: String, newEmail: String) {
+        auth.signInWithEmailAndPassword(oldEmail, userPassword)
+            .addOnCompleteListener { it ->
+                if (it.isSuccessful) {
+                    auth.currentUser!!.updateEmail(newEmail).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            userEmail.value = newEmail
+                        }
+                    }
+                }
+            }
     }
 }

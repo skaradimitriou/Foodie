@@ -79,5 +79,8 @@
     <string name="no_favorites_desc">Once you add a recipe as a favorite,\n it will show up here</string>
     <string name="no_query_header">No recent queries found</string>
     <string name="no_query_desc">Once you search something,\n it will show up here</string>
+    <string name="update_my_profile">Update my profile</string>
+    <string name="update_profile_btn">Update profile</string>
+    <string name="update_user_profile">Update User Profile</string>
 
 </resources>
