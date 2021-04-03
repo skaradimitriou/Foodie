@@ -82,5 +82,7 @@
     <string name="update_my_profile">Update my profile</string>
     <string name="update_profile_btn">Update profile</string>
     <string name="update_user_profile">Update User Profile</string>
+    <string name="skip">skip</string>
+    <string name="get_started_btn">Get Started</string>
 
 </resources>

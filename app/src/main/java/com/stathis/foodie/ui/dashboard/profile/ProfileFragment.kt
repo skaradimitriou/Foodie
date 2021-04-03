@@ -23,6 +23,7 @@ import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.details.DetailsActivity
 import com.stathis.foodie.ui.editProfile.EditProfileActivity
 import com.stathis.foodie.ui.intro.IntroActivity
+import com.stathis.foodie.ui.onboarding.OnboardingActivity
 import kotlinx.android.synthetic.main.bottom_sheet_choose_option.view.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -51,7 +52,8 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
         }
 
         edit_profile_btn.setOnClickListener {
-            startActivity(Intent(requireContext(),EditProfileActivity::class.java))
+            //startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+            startActivity(Intent(requireContext(), OnboardingActivity::class.java))
         }
 
         logout.apply {

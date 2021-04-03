@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
 import com.stathis.foodie.ui.dashboard.DashboardActivity
+import com.stathis.foodie.ui.onboarding.OnboardingActivity
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AbstractActivity(R.layout.activity_register) {
@@ -34,7 +35,7 @@ class RegisterActivity : AbstractActivity(R.layout.activity_register) {
         viewModel.registerSuccessful.observe(this, Observer {
             when (it) {
                 true -> {
-                    startActivity(Intent(this, DashboardActivity::class.java))
+                    startActivity(Intent(this, OnboardingActivity::class.java))
                 }
                 false -> {
                     Toast.makeText(this, "Please enter valid credentials", Toast.LENGTH_LONG).show()
