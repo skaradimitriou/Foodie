@@ -12,6 +12,8 @@ import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.EmptyModel
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.models.ShimmerModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 class ProfileViewModel : ViewModel(), ItemClickListener {
 

@@ -3,6 +3,7 @@ package com.stathis.foodie.ui.dashboard.profile
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
+import androidx.annotation.WorkerThread
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -12,6 +13,9 @@ import com.stathis.foodie.APP_KEY
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.models.ResponseModel
 import com.stathis.foodie.network.ApiClient
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,7 +57,7 @@ class ProfileRepository {
             })
     }
 
-    fun getUserProfileData() {
+     fun getUserProfileData() {
         userEmail.value = FirebaseAuth.getInstance().currentUser?.email.toString()
 
         databaseReference.child("users")

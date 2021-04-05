@@ -10,6 +10,10 @@ class OnboardingRepository : ViewModel() {
     val adapter = OnboardingAdapter()
 
     init {
+        createOnboardingItems()
+    }
+
+    fun createOnboardingItems() {
         adapter.submitList(
             listOf(
                 OnboardingItem(

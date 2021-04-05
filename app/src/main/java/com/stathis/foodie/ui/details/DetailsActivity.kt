@@ -11,6 +11,7 @@ import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.webview.WebviewActivity
+import com.stathis.foodie.utils.formatNumber
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AbstractActivity(R.layout.activity_details) {
@@ -45,7 +46,7 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
         }
 
         like_btn.setOnClickListener {
-            when(isFavorite){
+            when (isFavorite) {
                 true -> viewModel.removeRecipeFromFavorites(recipe)
                 false -> viewModel.addRecipeToFavorites(recipe)
             }
@@ -96,10 +97,10 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
 
         recipe_detail_label.text = item.recipe.label
         recipe_time.text = item.recipe.totalTime.toString()
-        calories.text = "%.2fg".format(item.recipe.calories)
-        protein.text = "%.2fg".format(item.recipe.totalNutrients.FAMS?.quantity)
-        carbs.text = "%.2fg".format(item.recipe.totalNutrients.CHOCDF?.quantity)
-        fats.text = "%.2fg".format(item.recipe.totalNutrients.FAT?.quantity)
+        calories.text = formatNumber(item.recipe.calories)
+        protein.text = item.recipe.totalNutrients.FAMS?.quantity?.let { formatNumber(it) }
+        carbs.text = item.recipe.totalNutrients.CHOCDF?.quantity?.let { formatNumber(it) }
+        fats.text = item.recipe.totalNutrients.FAT?.quantity?.let { formatNumber(it) }
     }
 
     override fun stopped() {
