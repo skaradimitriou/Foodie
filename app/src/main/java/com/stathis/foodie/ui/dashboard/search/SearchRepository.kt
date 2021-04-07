@@ -66,17 +66,6 @@ class SearchRepository {
 
                         false -> emptyQueries.value = true
                     }
-//                    if (p0.exists()) {
-//                        recentQueriesList.clear()
-//                        p0.children.forEach {
-//                            val query = it.getValue(QueryModel::class.java)
-//                            recentQueriesList.add(query!!)
-//                        }
-//
-//                        recentQueries.value = recentQueriesList
-//                    } else {
-//                        emptyQueries.value = true
-//                    }
                 }
             })
     }

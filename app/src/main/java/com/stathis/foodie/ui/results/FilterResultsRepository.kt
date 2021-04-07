@@ -5,6 +5,9 @@ import com.stathis.foodie.APP_ID
 import com.stathis.foodie.APP_KEY
 import com.stathis.foodie.models.ResponseModel
 import com.stathis.foodie.network.ApiClient
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,21 +22,26 @@ class FilterResultsRepository {
         mealType: String,
         dietType: String
     ) {
-        ApiClient.getCustomRecipes(
-            "",
-            "${kcalMinValue}-${kcalMaxValue}",
-            mealType,
-            dietType,
-            APP_ID,
-            APP_KEY
-        ).enqueue(object : Callback<ResponseModel> {
-            override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
-                data.value = response.body()
-            }
+        CoroutineScope(Dispatchers.IO).launch {
+            ApiClient.getCustomRecipes(
+                "",
+                "${kcalMinValue}-${kcalMaxValue}",
+                mealType,
+                dietType,
+                APP_ID,
+                APP_KEY
+            ).enqueue(object : Callback<ResponseModel> {
+                override fun onResponse(
+                    call: Call<ResponseModel>,
+                    response: Response<ResponseModel>
+                ) {
+                    data.value = response.body()
+                }
 
-            override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                data.value = null
-            }
-        })
+                override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                    data.value = null
+                }
+            })
+        }
     }
 }

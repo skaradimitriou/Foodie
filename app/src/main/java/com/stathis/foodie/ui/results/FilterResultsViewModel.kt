@@ -9,6 +9,9 @@ import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.models.ShimmerModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FilterResultsViewModel : ViewModel(), ItemClickListener {
 
@@ -17,7 +20,7 @@ class FilterResultsViewModel : ViewModel(), ItemClickListener {
     private lateinit var callback: RecipeClickListener
     val adapter = RecipeAdapter(this)
 
-    init{
+    init {
         adapter.submitList(
             listOf(
                 ShimmerModel(),

@@ -34,15 +34,13 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
         viewModel.getCookTime(recipe.recipe.totalTime)
 
         share_btn.setOnClickListener {
-            Intent(Intent.ACTION_SEND)
-                .setType("text/plain")
-                .putExtra(Intent.EXTRA_SUBJECT, "Check out this recipe!")
-                .putExtra(
-                    Intent.EXTRA_TEXT,
-                    "I think that you might be interested in ${recipe.recipe.label}"
+            startActivity(Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT,
+                    "I think that you might be interested in ${recipe.recipe.label}. Check it out here: ${recipe.recipe.url}"
                 )
-                .putExtra(Intent.EXTRA_STREAM, recipe.recipe.url)
-            startActivity(Intent.createChooser(intent, "Share with"));
+            })
         }
 
         like_btn.setOnClickListener {

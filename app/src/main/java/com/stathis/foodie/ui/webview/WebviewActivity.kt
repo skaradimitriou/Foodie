@@ -18,4 +18,8 @@ class WebviewActivity : AbstractActivity(R.layout.activity_webview) {
     }
 
     override fun stopped() {}
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
 }

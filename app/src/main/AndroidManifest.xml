@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/foodie_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.editProfile.EditProfileActivity"></activity>
+        <activity android:name=".ui.forgotPassword.ForgotPasswordActivity"></activity>
+        <activity android:name=".ui.editProfile.EditProfileActivity" />
         <activity android:name=".ui.onboarding.OnboardingActivity" />
         <activity android:name=".ui.categories.CategoriesResultsActivity" />
         <activity android:name=".ui.results.FilterResultsActivity" />
@@ -23,7 +24,9 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.details.DetailsActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
-        <activity android:name=".ui.login.LoginActivity" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.intro.IntroActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
