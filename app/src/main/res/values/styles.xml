@@ -16,6 +16,12 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="h1_title_bold" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- h2 title -->
     <style name="h2_title_bold" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>

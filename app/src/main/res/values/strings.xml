@@ -84,5 +84,9 @@
     <string name="update_user_profile">Update User Profile</string>
     <string name="skip">skip</string>
     <string name="get_started_btn">Get Started</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_pass_main">Enter the email address \n associated with your account</string>
+    <string name="forgot_pass_desc">We will email you a link to reset your password.</string>
+    <string name="forgot_pass_btn">Send</string>
 
 </resources>

@@ -11,6 +11,7 @@
     <color name="orange">#db6400</color>
     <color name="grey">#666666</color>
     <color name="light_grey">#f1f1f1</color>
+    <color name="lighter_grey">#f6f6f6</color>
     <color name="medium_grey">#999999</color>
     <color name="dark_grey">#222831</color>
     <color name="darker_grey">#121212</color>

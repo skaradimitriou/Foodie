@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/foodie_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.forgotPassword.ForgotPasswordActivity"></activity>
+        <activity android:name=".ui.forgotPassword.ForgotPasswordActivity" android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".ui.editProfile.EditProfileActivity" />
         <activity android:name=".ui.onboarding.OnboardingActivity" />
         <activity android:name=".ui.categories.CategoriesResultsActivity" />
