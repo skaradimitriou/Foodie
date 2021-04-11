@@ -31,13 +31,13 @@ class ProfileRepository {
     val userImageLink = MutableLiveData<String>()
     val username = MutableLiveData<String>()
 
-    fun getUserFavorites() {
+    suspend fun getUserFavorites() {
         databaseReference.child("users")
             .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
             .child("favoriteRecipeList")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
-                    data.value = null
+                    data.postValue(null)
                 }
 
                 override fun onDataChange(p0: DataSnapshot) {
@@ -48,17 +48,17 @@ class ProfileRepository {
                             favoriteRecipeList.add(fav!!)
                             Log.d("it", it.toString())
                         }
-                        data.value = favoriteRecipeList
-                        emptyFavorites.value = false
+                        data.postValue(favoriteRecipeList)
+                        emptyFavorites.postValue(false)
                     } else {
-                        emptyFavorites.value = true
+                        emptyFavorites.postValue(true)
                     }
                 }
             })
     }
 
-     fun getUserProfileData() {
-        userEmail.value = FirebaseAuth.getInstance().currentUser?.email.toString()
+    suspend fun getUserProfileData() {
+        userEmail.postValue(FirebaseAuth.getInstance().currentUser?.email.toString())
 
         databaseReference.child("users")
             .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
@@ -66,12 +66,12 @@ class ProfileRepository {
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(p0: DataSnapshot) {
                     if (p0.exists()) {
-                        username.value = p0.value.toString()
+                        username.postValue(p0.value.toString())
                     }
                 }
 
                 override fun onCancelled(p0: DatabaseError) {
-                    username.value = null
+                    username.postValue(null)
                 }
             })
     }

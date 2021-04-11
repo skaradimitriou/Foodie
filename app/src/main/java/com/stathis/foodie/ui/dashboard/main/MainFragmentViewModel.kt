@@ -42,6 +42,7 @@ class MainFragmentViewModel : ViewModel(), ItemClickListener {
 
         recipes.observe(owner, Observer {
             Log.d("data is", "data is $it")
+
             adapter.submitList(it.hits)
             adapter.notifyDataSetChanged()
         })

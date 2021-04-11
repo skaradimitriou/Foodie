@@ -1,9 +1,9 @@
 package com.stathis.foodie.ui.dashboard.search
 
-import android.app.DownloadManager
 import android.content.Intent
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import com.stathis.foodie.R
@@ -39,6 +39,7 @@ class SearchFragment : AbstractFragment(R.layout.fragment_search) {
                 Log.d("HELLO", query)
 
                 viewModel.addQueryToDb(QueryModel(query!!))
+                viewModel.clearCounters()
                 callApiForResuls(query)
                 return true
             }
@@ -68,5 +69,17 @@ class SearchFragment : AbstractFragment(R.layout.fragment_search) {
                     .putExtra("RECIPE", recipe))
             }
         })
+
+        observeDataPaging(query)
+    }
+
+    fun observeDataPaging(query : String){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            search_recycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                if (!search_recycler.canScrollVertically(1)) {
+                    viewModel.loadMoreRecipes(query)
+                }
+            }
+        }
     }
 }

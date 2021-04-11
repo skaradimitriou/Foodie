@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.stathis.foodie.adapters.RecipeAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener

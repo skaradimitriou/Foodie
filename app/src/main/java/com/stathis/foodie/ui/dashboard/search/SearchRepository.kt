@@ -9,6 +9,7 @@ import com.google.firebase.database.ValueEventListener
 import com.stathis.foodie.APP_ID
 import com.stathis.foodie.APP_KEY
 import com.stathis.foodie.models.QueryModel
+import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.models.ResponseModel
 import com.stathis.foodie.network.ApiClient
 import retrofit2.Call
@@ -18,22 +19,59 @@ import retrofit2.Response
 class SearchRepository {
 
     private val databaseReference by lazy { FirebaseDatabase.getInstance().reference }
-    val data = MutableLiveData<ResponseModel>()
+    val data = MutableLiveData<List<RecipeMain>>()
     val emptyQueries = MutableLiveData<Boolean>()
     val recentQueriesList = mutableListOf<QueryModel>()
     val recentQueries = MutableLiveData<List<QueryModel>>()
 
-    fun getDataFromApi(query: String) {
-        ApiClient.getRecipes(query, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
-            override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
-                data.value = response.body()
-                emptyQueries.value = false
-            }
+    private var testArray: MutableList<RecipeMain> = arrayListOf()
 
-            override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                data.value = null
+    private var noOfApiCalls = 0
+    private var oldCounter = 0
+    private var newCounter = 10
+
+    fun getDataFromApi(query: String) {
+        incrementCounters()
+
+        ApiClient.getRecipesByPage(oldCounter, newCounter, query, APP_ID, APP_KEY)
+            .enqueue(object : Callback<ResponseModel> {
+                override fun onResponse(
+                    call: Call<ResponseModel>,
+                    response: Response<ResponseModel>
+                ) {
+                    response.body()!!.hits.forEach {
+                        testArray.add(it)
+                    }
+
+                    data.value = testArray
+                    emptyQueries.value = false
+                }
+
+                override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                    data.value = null
+                }
+            })
+    }
+
+    private fun incrementCounters() {
+        noOfApiCalls += 1
+
+        when (noOfApiCalls) {
+            1 -> {
+                oldCounter = 0
+                newCounter = 10
             }
-        })
+            else -> {
+                oldCounter += 10
+                newCounter += 11
+            }
+        }
+    }
+
+    fun clearCounters() {
+        noOfApiCalls = 0
+        oldCounter = 0
+        newCounter = 0
     }
 
     fun addQueryToDb(query: QueryModel) {
@@ -53,7 +91,7 @@ class SearchRepository {
                 }
 
                 override fun onDataChange(p0: DataSnapshot) {
-                    when(p0.exists()){
+                    when (p0.exists()) {
                         true -> {
                             recentQueriesList.clear()
                             p0.children.forEach {

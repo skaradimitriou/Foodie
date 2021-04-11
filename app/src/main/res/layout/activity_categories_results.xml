@@ -34,7 +34,6 @@
             android:id="@+id/category_result_subtxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_10"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@id/filter_screen_header"
             app:layout_constraintTop_toTopOf="@+id/filter_screen_header"

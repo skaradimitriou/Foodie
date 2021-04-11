@@ -1,5 +1,6 @@
 package com.stathis.foodie.ui.dashboard.search
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -32,7 +33,9 @@ class SearchViewModel : ViewModel(), ItemClickListener {
 
         data.observe(owner, Observer {
             it?.let {
-                adapter.submitList(it.hits)
+                Log.d("", it.toString())
+
+                adapter.submitList(it)
                 adapter.notifyDataSetChanged()
             }
         })
@@ -42,7 +45,7 @@ class SearchViewModel : ViewModel(), ItemClickListener {
         })
 
         emptyQueries.observe(owner, Observer {
-            when(it){
+            when (it) {
                 true -> {
                     adapter.submitList(listOf(EmptyModel()))
                     adapter.notifyDataSetChanged()
@@ -71,5 +74,13 @@ class SearchViewModel : ViewModel(), ItemClickListener {
 
     fun addQueryToDb(query: QueryModel) {
         repo.addQueryToDb(query)
+    }
+
+    fun loadMoreRecipes(query: String) {
+        repo.getDataFromApi(query)
+    }
+
+    fun clearCounters() {
+        repo.clearCounters()
     }
 }

@@ -14,6 +14,7 @@ import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.models.ShimmerModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ProfileViewModel : ViewModel(), ItemClickListener {
 
@@ -32,7 +33,8 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
 
     fun getFavoriteData(callback: RecipeClickListener) {
         this.callback = callback
-        repo.getUserFavorites()
+
+        CoroutineScope(Dispatchers.IO).launch { repo.getUserFavorites() }
     }
 
     override fun onItemClick(view: View) {
@@ -47,8 +49,8 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
             adapter.notifyDataSetChanged()
         })
 
-        emptyFavorites.observe(owner, Observer{
-            when(it){
+        emptyFavorites.observe(owner, Observer {
+            when (it) {
                 true -> {
                     adapter.submitList(listOf(EmptyModel()))
                     adapter.notifyDataSetChanged()
@@ -76,6 +78,8 @@ class ProfileViewModel : ViewModel(), ItemClickListener {
     }
 
     fun getUserProfileData() {
-        repo.getUserProfileData()
+        CoroutineScope(Dispatchers.IO).launch {
+            repo.getUserProfileData()
+        }
     }
 }

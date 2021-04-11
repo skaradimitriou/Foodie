@@ -1,13 +1,7 @@
 package com.stathis.foodie.network
 
-import androidx.annotation.WorkerThread
 import com.stathis.foodie.models.ResponseModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -25,6 +19,10 @@ object ApiClient {
 
     fun getRecipes(recipe: String, app_id: String, app_key: String): Call<ResponseModel> {
         return api.getRecipes(recipe, app_id, app_key)
+    }
+
+    fun getRecipesByPage(from : Int, to:Int, recipe: String, app_id: String, app_key: String): Call<ResponseModel> {
+        return api.getRecipesByPage(from,to,recipe, app_id, app_key)
     }
 
     fun getCustomRecipes(

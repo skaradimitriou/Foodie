@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
 import com.stathis.foodie.ui.dashboard.DashboardActivity
+import com.stathis.foodie.ui.forgotPassword.ForgotPasswordActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AbstractActivity(R.layout.activity_login) {
@@ -22,6 +23,10 @@ class LoginActivity : AbstractActivity(R.layout.activity_login) {
     override fun running() {
         login_btn.setOnClickListener {
             viewModel.validateUserInput(login_email_input, login_password_input)
+        }
+
+        forgot_pass_btn.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
 
         observeViewModel()
