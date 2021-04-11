@@ -62,8 +62,8 @@ class SearchRepository {
                 newCounter = 10
             }
             else -> {
-                oldCounter += 10
-                newCounter += 11
+                oldCounter = (newCounter + 1)
+                newCounter = oldCounter + 10
             }
         }
     }
