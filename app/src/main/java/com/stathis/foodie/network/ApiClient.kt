@@ -21,8 +21,14 @@ object ApiClient {
         return api.getRecipes(recipe, app_id, app_key)
     }
 
-    fun getRecipesByPage(from : Int, to:Int, recipe: String, app_id: String, app_key: String): Call<ResponseModel> {
-        return api.getRecipesByPage(from,to,recipe, app_id, app_key)
+    fun getRecipesByPage(
+        from: Int,
+        to: Int,
+        recipe: String,
+        app_id: String,
+        app_key: String
+    ): Call<ResponseModel> {
+        return api.getRecipesByPage(from, to, recipe, app_id, app_key)
     }
 
     fun getCustomRecipes(
@@ -37,29 +43,35 @@ object ApiClient {
     }
 
     fun getCuisineTypeResults(
+        from: Int,
+        to: Int,
         query: String,
         cuisineType: String,
         app_id: String,
         app_key: String
     ): Call<ResponseModel> {
-        return api.getCuisineTypeResults(query, cuisineType, app_id, app_key)
+        return api.getCuisineTypeResults(from,to,query, cuisineType, app_id, app_key)
     }
 
     fun getMealTypeResults(
+        from: Int,
+        to: Int,
         query: String,
         mealType: String,
         app_id: String,
         app_key: String
     ): Call<ResponseModel> {
-        return api.getMealTypeResults(query, mealType, app_id, app_key)
+        return api.getMealTypeResults(from,to,query, mealType, app_id, app_key)
     }
 
     fun getDishTypeResults(
+        from: Int,
+        to: Int,
         query: String,
         dishType: String,
         app_id: String,
         app_key: String
     ): Call<ResponseModel> {
-        return api.getDishTypeResults(query, dishType, app_id, app_key)
+        return api.getDishTypeResults(from,to,query, dishType, app_id, app_key)
     }
 }

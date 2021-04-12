@@ -8,6 +8,7 @@ import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.details.DetailsActivity
 import kotlinx.android.synthetic.main.activity_categories_results.*
+import kotlinx.android.synthetic.main.fragment_search.*
 
 class CategoriesResultsActivity : AbstractActivity(R.layout.activity_categories_results) {
 
@@ -19,10 +20,12 @@ class CategoriesResultsActivity : AbstractActivity(R.layout.activity_categories_
     }
 
     override fun running() {
+        viewModel.clearCounters()
+
         categoryName = intent.getStringExtra("CATEGORY") ?: ""
         category_result_subtxt.text = categoryName
 
-        viewModel.getResults(categoryName.toLowerCase())
+        getData()
         category_result_recycler.adapter = viewModel.adapter
 
         swipe_refresh_layout.setOnRefreshListener {
@@ -42,5 +45,20 @@ class CategoriesResultsActivity : AbstractActivity(R.layout.activity_categories_
 
     override fun stopped() {
         viewModel.removeObserve(this)
+    }
+
+    private fun getData(){
+        viewModel.getResults(categoryName.toLowerCase())
+        observeDataPaging()
+    }
+
+    fun observeDataPaging(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            category_result_recycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                if (!category_result_recycler.canScrollVertically(1)) {
+                    viewModel.loadMoreRecipes(categoryName.toLowerCase())
+                }
+            }
+        }
     }
 }

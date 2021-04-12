@@ -35,6 +35,8 @@ interface FoodieApi {
 
     @GET("search")
     fun getCuisineTypeResults(
+        @Query("from") from: Int,
+        @Query("to") to: Int,
         @Query("q") query: String,
         @Query("cuisineType") cuisineType: String,
         @Query("app_id") app_id: String,
@@ -43,6 +45,8 @@ interface FoodieApi {
 
     @GET("search")
     fun getMealTypeResults(
+        @Query("from") from: Int,
+        @Query("to") to: Int,
         @Query("q") query: String,
         @Query("mealType") mealType: String,
         @Query("app_id") app_id: String,
@@ -51,6 +55,8 @@ interface FoodieApi {
 
     @GET("search")
     fun getDishTypeResults(
+        @Query("from") from: Int,
+        @Query("to") to: Int,
         @Query("q") query: String,
         @Query("dishType") dishType: String,
         @Query("app_id") app_id: String,

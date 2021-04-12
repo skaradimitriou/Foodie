@@ -41,7 +41,7 @@ class MainFragmentRepository {
     }
 
     fun getMealTypeResults(mealType: String) {
-        ApiClient.getMealTypeResults("", mealType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel>{
+        ApiClient.getMealTypeResults(0,10,"", mealType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel>{
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 recipes.value = response.body()
             }

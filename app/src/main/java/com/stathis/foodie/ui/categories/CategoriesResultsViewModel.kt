@@ -47,13 +47,21 @@ class CategoriesResultsViewModel : ViewModel(), ItemClickListener {
         this.callback = callback
 
         data.observe(owner, Observer {
-            adapter.submitList(it.hits)
+            adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
     }
 
     fun removeObserve(owner: LifecycleOwner) {
         data.removeObservers(owner)
+    }
+
+    fun loadMoreRecipes(cuisineType: String) {
+        getResults(cuisineType)
+    }
+
+    fun clearCounters() {
+        repo.clearCounters()
     }
 
     override fun onItemClick(view: View) {

@@ -12,6 +12,7 @@ import com.stathis.foodie.models.QueryModel
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.models.ResponseModel
 import com.stathis.foodie.network.ApiClient
+import com.stathis.foodie.utils.ApiPagingHelper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,31 +20,27 @@ import retrofit2.Response
 class SearchRepository {
 
     private val databaseReference by lazy { FirebaseDatabase.getInstance().reference }
+    private var recipes: MutableList<RecipeMain> = arrayListOf()
     val data = MutableLiveData<List<RecipeMain>>()
     val emptyQueries = MutableLiveData<Boolean>()
     val recentQueriesList = mutableListOf<QueryModel>()
     val recentQueries = MutableLiveData<List<QueryModel>>()
-
-    private var testArray: MutableList<RecipeMain> = arrayListOf()
-
-    private var noOfApiCalls = 0
-    private var oldCounter = 0
-    private var newCounter = 10
+    private val apiPager = ApiPagingHelper()
 
     fun getDataFromApi(query: String) {
-        incrementCounters()
+        apiPager.incrementCounters()
 
-        ApiClient.getRecipesByPage(oldCounter, newCounter, query, APP_ID, APP_KEY)
+        ApiClient.getRecipesByPage(apiPager.oldCounter, apiPager.newCounter, query, APP_ID, APP_KEY)
             .enqueue(object : Callback<ResponseModel> {
                 override fun onResponse(
                     call: Call<ResponseModel>,
                     response: Response<ResponseModel>
                 ) {
                     response.body()!!.hits.forEach {
-                        testArray.add(it)
+                        recipes.add(it)
                     }
 
-                    data.value = testArray
+                    data.value = recipes
                     emptyQueries.value = false
                 }
 
@@ -51,27 +48,6 @@ class SearchRepository {
                     data.value = null
                 }
             })
-    }
-
-    private fun incrementCounters() {
-        noOfApiCalls += 1
-
-        when (noOfApiCalls) {
-            1 -> {
-                oldCounter = 0
-                newCounter = 10
-            }
-            else -> {
-                oldCounter = (newCounter + 1)
-                newCounter = oldCounter + 10
-            }
-        }
-    }
-
-    fun clearCounters() {
-        noOfApiCalls = 0
-        oldCounter = 0
-        newCounter = 0
     }
 
     fun addQueryToDb(query: QueryModel) {
@@ -106,5 +82,9 @@ class SearchRepository {
                     }
                 }
             })
+    }
+
+    fun clearCounters() {
+        apiPager.clearCounters()
     }
 }
