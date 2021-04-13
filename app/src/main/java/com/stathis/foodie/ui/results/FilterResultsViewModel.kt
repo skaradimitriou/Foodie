@@ -58,6 +58,10 @@ class FilterResultsViewModel : ViewModel(), ItemClickListener {
         data.removeObservers(owner)
     }
 
+    fun clearCounters() {
+        repo.clearCounters()
+    }
+
     override fun onItemClick(view: View) {
         when (view.tag) {
             is RecipeMain -> callback.onRecipeClick(view.tag as RecipeMain)

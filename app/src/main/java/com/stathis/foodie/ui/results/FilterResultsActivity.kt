@@ -51,6 +51,8 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
     }
 
     private fun getData() {
+        viewModel.clearCounters()
+
         viewModel.getRecipeData(
             kcalMinValue.toInt(),
             kcalMaxValue.toInt(),

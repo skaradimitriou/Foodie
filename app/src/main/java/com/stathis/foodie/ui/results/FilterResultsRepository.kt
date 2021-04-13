@@ -49,4 +49,8 @@ class FilterResultsRepository {
             }
         })
     }
+
+    fun clearCounters() {
+        apiPager.clearCounters()
+    }
 }
