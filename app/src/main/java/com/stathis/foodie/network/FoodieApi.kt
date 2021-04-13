@@ -25,6 +25,8 @@ interface FoodieApi {
 
     @GET("search")
     fun getCustomRecipes(
+        @Query("from") from: Int,
+        @Query("to") to: Int,
         @Query("q") query: String,
         @Query("calories") calories: String,
         @Query("mealType") mealType: String,

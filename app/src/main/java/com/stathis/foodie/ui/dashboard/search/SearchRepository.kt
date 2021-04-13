@@ -30,7 +30,7 @@ class SearchRepository {
     fun getDataFromApi(query: String) {
         apiPager.incrementCounters()
 
-        ApiClient.getRecipesByPage(apiPager.oldCounter, apiPager.newCounter, query, APP_ID, APP_KEY)
+        ApiClient.getRecipesByPage(apiPager.from, apiPager.to, query, APP_ID, APP_KEY)
             .enqueue(object : Callback<ResponseModel> {
                 override fun onResponse(
                     call: Call<ResponseModel>,

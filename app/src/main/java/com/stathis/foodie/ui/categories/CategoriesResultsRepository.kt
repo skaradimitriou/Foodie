@@ -20,7 +20,7 @@ class CategoriesResultsRepository {
     fun getCuisineTypeResults(cuisineType : String){
         apiPager.incrementCounters()
 
-        ApiClient.getCuisineTypeResults(apiPager.oldCounter,apiPager.newCounter,"", cuisineType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
+        ApiClient.getCuisineTypeResults(apiPager.from,apiPager.to,"", cuisineType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 response.body()!!.hits.forEach {
                     recipes.add(it)
@@ -38,7 +38,7 @@ class CategoriesResultsRepository {
     fun getMealTypeResults(mealType : String){
         apiPager.incrementCounters()
 
-        ApiClient.getMealTypeResults(apiPager.oldCounter,apiPager.newCounter,"", mealType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
+        ApiClient.getMealTypeResults(apiPager.from,apiPager.to,"", mealType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 response.body()!!.hits.forEach {
                     recipes.add(it)
@@ -56,7 +56,7 @@ class CategoriesResultsRepository {
     fun getDishTypeResults(dishType : String){
         apiPager.incrementCounters()
 
-        ApiClient.getDishTypeResults(apiPager.oldCounter,apiPager.newCounter,"", dishType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
+        ApiClient.getDishTypeResults(apiPager.from,apiPager.to,"", dishType, APP_ID, APP_KEY).enqueue(object : Callback<ResponseModel> {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 response.body()!!.hits.forEach {
                     recipes.add(it)

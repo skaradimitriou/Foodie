@@ -32,6 +32,8 @@ object ApiClient {
     }
 
     fun getCustomRecipes(
+        from: Int,
+        to: Int,
         query: String,
         calories: String,
         mealType: String,
@@ -39,7 +41,7 @@ object ApiClient {
         app_id: String,
         app_key: String
     ): Call<ResponseModel> {
-        return api.getCustomRecipes(query, calories, mealType, dietType, app_id, app_key)
+        return api.getCustomRecipes(from,to,query, calories, mealType, dietType, app_id, app_key)
     }
 
     fun getCuisineTypeResults(

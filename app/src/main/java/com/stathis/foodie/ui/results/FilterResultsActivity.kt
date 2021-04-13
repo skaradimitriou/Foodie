@@ -7,7 +7,9 @@ import com.stathis.foodie.abstraction.AbstractActivity
 import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.details.DetailsActivity
+import kotlinx.android.synthetic.main.activity_categories_results.*
 import kotlinx.android.synthetic.main.activity_filter_results.*
+import kotlinx.android.synthetic.main.activity_filter_results.swipe_refresh_layout
 import kotlinx.android.synthetic.main.fragment_filters.*
 
 class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results) {
@@ -44,6 +46,10 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
         viewModel.observeData(this)
     }
 
+    override fun stopped() {
+        viewModel.removeObservers(this)
+    }
+
     private fun getData() {
         viewModel.getRecipeData(
             kcalMinValue.toInt(),
@@ -56,10 +62,29 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
                         .putExtra("RECIPE", recipe))
                 }
             })
+
         swipe_refresh_layout.isRefreshing = false
+
+        observeDataPaging()
     }
 
-    override fun stopped() {
-        viewModel.removeObservers(this)
+    fun observeDataPaging(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            results_screen_recycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                if (!results_screen_recycler.canScrollVertically(1)) {
+                    viewModel.getRecipeData(
+                        kcalMinValue.toInt(),
+                        kcalMaxValue.toInt(),
+                        mealType,
+                        dietType,
+                        object : RecipeClickListener {
+                            override fun onRecipeClick(recipe: RecipeMain) {
+                                startActivity(Intent(this@FilterResultsActivity, DetailsActivity::class.java)
+                                    .putExtra("RECIPE", recipe))
+                            }
+                        })
+                }
+            }
+        }
     }
 }

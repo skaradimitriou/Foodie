@@ -8,7 +8,6 @@ import com.stathis.foodie.listeners.RecipeClickListener
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.details.DetailsActivity
 import kotlinx.android.synthetic.main.activity_categories_results.*
-import kotlinx.android.synthetic.main.fragment_search.*
 
 class CategoriesResultsActivity : AbstractActivity(R.layout.activity_categories_results) {
 

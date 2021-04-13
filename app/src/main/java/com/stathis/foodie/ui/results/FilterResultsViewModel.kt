@@ -49,7 +49,7 @@ class FilterResultsViewModel : ViewModel(), ItemClickListener {
 
     fun observeData(owner: LifecycleOwner) {
         data.observe(owner, Observer {
-            adapter.submitList(it.hits)
+            adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
     }
