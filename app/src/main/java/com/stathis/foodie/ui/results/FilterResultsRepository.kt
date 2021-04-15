@@ -14,6 +14,7 @@ import retrofit2.Response
 class FilterResultsRepository {
 
     val data = MutableLiveData<List<RecipeMain>>()
+    val errorData = MutableLiveData<Boolean>()
     private var recipes: MutableList<RecipeMain> = arrayListOf()
     private val apiPager = ApiPagingHelper()
 
@@ -41,11 +42,17 @@ class FilterResultsRepository {
                     recipes.add(it)
                 }
 
-                data.value = recipes
+                when(recipes.size){
+                    0 -> errorData.value = true
+                    else -> {
+                        data.value = recipes
+                        errorData.value = false
+                    }
+                }
             }
 
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                data.value = null
+                errorData.value = true
             }
         })
     }

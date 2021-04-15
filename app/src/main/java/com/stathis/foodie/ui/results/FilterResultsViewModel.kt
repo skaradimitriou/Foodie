@@ -1,10 +1,8 @@
 package com.stathis.foodie.ui.results
 
 import android.view.View
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.google.android.material.snackbar.Snackbar
 import com.stathis.foodie.adapters.RecipeAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.RecipeClickListener
@@ -18,6 +16,7 @@ class FilterResultsViewModel : ViewModel(), ItemClickListener {
 
     private val repo = FilterResultsRepository()
     val data = repo.data
+    val errorCase = repo.errorData
     private lateinit var callback: RecipeClickListener
     val adapter = RecipeAdapter(this)
 
@@ -49,8 +48,13 @@ class FilterResultsViewModel : ViewModel(), ItemClickListener {
 
     fun observeData(owner: LifecycleOwner) {
         data.observe(owner, Observer {
-            adapter.submitList(it)
-            adapter.notifyDataSetChanged()
+            when(it.size){
+                0 -> Unit
+                else -> {
+                    adapter.submitList(it)
+                    adapter.notifyDataSetChanged()
+                }
+            }
         })
     }
 

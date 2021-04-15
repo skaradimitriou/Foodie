@@ -1,7 +1,9 @@
 package com.stathis.foodie.ui.results
 
 import android.content.Intent
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
 import com.stathis.foodie.listeners.RecipeClickListener
@@ -44,6 +46,20 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
         }
 
         viewModel.observeData(this)
+
+        viewModel.errorCase.observe(this, Observer {
+            when(it){
+                true -> {
+                    Snackbar.make(findViewById(android.R.id.content), application.resources.getText(R.string.snackbar_no_results), Snackbar.LENGTH_LONG)
+                        .setAction("Go back") {
+                            onBackPressed()
+                        }
+                        .show()
+                }
+
+                false -> Unit
+            }
+        })
     }
 
     override fun stopped() {
@@ -60,8 +76,10 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
             dietType,
             object : RecipeClickListener {
                 override fun onRecipeClick(recipe: RecipeMain) {
-                    startActivity(Intent(this@FilterResultsActivity, DetailsActivity::class.java)
-                        .putExtra("RECIPE", recipe))
+                    startActivity(
+                        Intent(this@FilterResultsActivity, DetailsActivity::class.java)
+                            .putExtra("RECIPE", recipe)
+                    )
                 }
             })
 
@@ -70,7 +88,7 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
         observeDataPaging()
     }
 
-    fun observeDataPaging(){
+    fun observeDataPaging() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             results_screen_recycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
                 if (!results_screen_recycler.canScrollVertically(1)) {
@@ -81,12 +99,18 @@ class FilterResultsActivity : AbstractActivity(R.layout.activity_filter_results)
                         dietType,
                         object : RecipeClickListener {
                             override fun onRecipeClick(recipe: RecipeMain) {
-                                startActivity(Intent(this@FilterResultsActivity, DetailsActivity::class.java)
-                                    .putExtra("RECIPE", recipe))
+                                startActivity(
+                                    Intent(this@FilterResultsActivity, DetailsActivity::class.java)
+                                        .putExtra("RECIPE", recipe)
+                                )
                             }
                         })
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

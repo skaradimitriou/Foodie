@@ -28,8 +28,7 @@ class FiltersFragment : AbstractFragment(R.layout.fragment_filters) {
         meal_type_autocomplete.setAdapter(mealTypeAdapter)
 
         val dietTypeOptions = resources.getStringArray(R.array.diet_type_options)
-        val dietTypeAdapter =
-            ArrayAdapter(requireContext(), R.layout.dropdown_item, dietTypeOptions)
+        val dietTypeAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, dietTypeOptions)
         diet_autocomplete.setAdapter(dietTypeAdapter)
 
         find_recipes_floating_btn.setOnClickListener {
