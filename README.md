@@ -18,10 +18,11 @@ Other implementations: <br/>
 • Personalised recipe results on home screen according to what hour is it
 
 ### Next Sprint Tasks
-a) Allow users to reset their password
-b) Allow users to edit their profile data <br/>
+a) Allow users to reset their password ✔️ <br>
+b) Allow users to edit their profile data ✔️ <br/>
 c) Add a favorite counter in the profile screen </br>
 d) Research how a search with filters can be implemented for the Search Screen
+e) Create paging for the results screens ✔️
 
 ### Ideas for further development 
 
