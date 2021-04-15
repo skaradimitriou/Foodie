@@ -21,7 +21,7 @@ Other implementations: <br/>
 a) Allow users to reset their password ✔️ <br>
 b) Allow users to edit their profile data ✔️ <br/>
 c) Add a favorite counter in the profile screen </br>
-d) Research how a search with filters can be implemented for the Search Screen
+d) Research how a search with filters can be implemented for the Search Screen <br>
 e) Create paging for the results screens ✔️
 
 ### Ideas for further development 
