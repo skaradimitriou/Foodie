@@ -52,5 +52,13 @@
             app:spanCount="2"
             tools:listitem="@layout/holder_recipe_item_row" />
 
+        <ProgressBar
+            android:id="@+id/categories_results_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

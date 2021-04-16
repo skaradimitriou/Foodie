@@ -2,6 +2,7 @@ package com.stathis.foodie.ui.categories
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.stathis.foodie.R
@@ -16,6 +17,7 @@ class CategoriesResultsViewModel : ViewModel(), ItemClickListener {
 
     private val repo = CategoriesResultsRepository()
     val data = repo.data
+    val isLoading = MutableLiveData<Boolean>()
     val adapter = RecipeAdapter(this)
     private lateinit var callback: RecipeClickListener
 
@@ -35,6 +37,7 @@ class CategoriesResultsViewModel : ViewModel(), ItemClickListener {
     }
 
     fun getResults(cuisineType: String) {
+        isLoading.value = true
         when (cuisineType) {
             "breakfast", "lunch" -> repo.getMealTypeResults(cuisineType)
             "soup", "salad", "dessert" -> repo.getDishTypeResults(cuisineType)
@@ -47,6 +50,7 @@ class CategoriesResultsViewModel : ViewModel(), ItemClickListener {
         this.callback = callback
 
         data.observe(owner, Observer {
+            isLoading.value = false
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })

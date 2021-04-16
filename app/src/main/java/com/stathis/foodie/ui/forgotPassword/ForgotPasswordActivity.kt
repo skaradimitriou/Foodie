@@ -16,11 +16,6 @@ class ForgotPasswordActivity : AbstractActivity(R.layout.activity_forgot_passwor
 
     override fun init() {
         viewModel = ViewModelProvider(this).get(ForgotPasswordViewModel::class.java)
-
-        /*
-         * As a user I want to be able to restore my password
-         *
-         */
     }
 
     override fun running() {
@@ -44,6 +39,6 @@ class ForgotPasswordActivity : AbstractActivity(R.layout.activity_forgot_passwor
         Snackbar.make(findViewById(android.R.id.content), "The email has been sent. Please check your inbox", Snackbar.LENGTH_LONG)
             .show()
 
-        startActivity(Intent(this,LoginActivity::class.java) )
+        startActivity(Intent(this,LoginActivity::class.java))
     }
 }

@@ -1,6 +1,8 @@
 package com.stathis.foodie.ui.categories
 
 import android.content.Intent
+import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
@@ -40,18 +42,25 @@ class CategoriesResultsActivity : AbstractActivity(R.layout.activity_categories_
                 )
             }
         })
+
+        viewModel.isLoading.observe(this, Observer {
+            when(it){
+                true -> categories_results_loading.visibility = View.VISIBLE
+                false -> categories_results_loading.visibility = View.GONE
+            }
+        })
     }
 
     override fun stopped() {
         viewModel.removeObserve(this)
     }
 
-    private fun getData(){
+    private fun getData() {
         viewModel.getResults(categoryName.toLowerCase())
         observeDataPaging()
     }
 
-    fun observeDataPaging(){
+    fun observeDataPaging() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             category_result_recycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
                 if (!category_result_recycler.canScrollVertically(1)) {
