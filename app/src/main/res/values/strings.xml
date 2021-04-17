@@ -90,5 +90,10 @@
     <string name="forgot_pass_btn">Send</string>
 
     <string name="snackbar_no_results">No results found</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="e_mail">E-mail</string>
+    <string name="username">Username</string>
+    <string name="save_btn">SAVE</string>
 
 </resources>

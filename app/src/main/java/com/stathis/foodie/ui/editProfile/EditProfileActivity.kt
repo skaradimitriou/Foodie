@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
 import kotlinx.android.synthetic.main.activity_edit_profile.*
-import kotlinx.android.synthetic.main.activity_edit_profile.edit_profile_save_data_btn
 import kotlinx.android.synthetic.main.view_authorize_user_credentials.view.*
 
 class EditProfileActivity : AbstractActivity(R.layout.activity_edit_profile) {
@@ -34,53 +33,85 @@ class EditProfileActivity : AbstractActivity(R.layout.activity_edit_profile) {
     override fun running() {
         viewModel.getUserData()
 
-        edit_profile_btn.setOnClickListener {
-            viewModel.makeFieldsEditable()
+        edit_username_btn.setOnClickListener {
+            viewModel.makeUsernameEditable()
         }
 
-        edit_profile_save_data_btn.setOnClickListener {
+        edit_email_btn.setOnClickListener {
+            viewModel.makeEmailEditable()
+        }
+
+        edit_phone_btn.setOnClickListener {
+            viewModel.makePhoneEditable()
+        }
+
+        edit_profile_save_btn.setOnClickListener{
+            //save user input from all fields
             if (oldUserEmail != edit_profile_email.text.toString()) {
                 val newEmail = edit_profile_email.text.toString()
                 showLoginDialogue(newEmail)
             }
 
             viewModel.saveUsernameToDb(edit_profile_username.text.toString())
+            viewModel.savePhoneToDb(edit_profile_phone.text.toString())
+
         }
 
-        viewModel.isEditable.observe(this, Observer {
-            when (it) {
-                true -> {
-                    edit_profile_username.isEnabled = true
-                    edit_profile_email.isEnabled = true
-                }
+        edit_profile_logout_btn.setOnClickListener {
+            viewModel.logoutUser()
+        }
 
-                false -> {
-                    edit_profile_username.isEnabled = false
-                    edit_profile_email.isEnabled = false
-                }
+        observeData()
+    }
+
+    override fun stopped() {
+        viewModel.isUsernameEditable.removeObservers(this)
+        viewModel.isEmailEditable.removeObservers(this)
+        viewModel.isPhoneEditable.removeObservers(this)
+        viewModel.userEmail.removeObservers(this)
+        viewModel.username.removeObservers(this)
+        viewModel.phoneNumber.removeObservers(this)
+    }
+
+    private fun observeData() {
+        viewModel.isUsernameEditable.observe(this, Observer {
+            when (it) {
+                true -> edit_profile_username.isEnabled = true
+                false -> edit_profile_username.isEnabled = false
+            }
+        })
+
+        viewModel.isEmailEditable.observe(this, Observer {
+            when (it) {
+                true -> edit_profile_email.isEnabled = true
+                false -> edit_profile_email.isEnabled = false
+            }
+        })
+
+        viewModel.isPhoneEditable.observe(this, Observer {
+            when (it) {
+                true -> edit_profile_phone.isEnabled = true
+                false -> edit_profile_phone.isEnabled = false
             }
         })
 
         viewModel.userEmail.observe(this, Observer {
             oldUserEmail = it
-            it?.let { profile_email.text = it }
             it?.let { edit_profile_email.setText(it) }
         })
 
         viewModel.username.observe(this, Observer {
-            it?.let { profile_username.text = it }
             it?.let { edit_profile_username.setText(it) }
+        })
+
+        viewModel.phoneNumber.observe(this, Observer {
+            it?.let { edit_profile_phone.setText(it) }
         })
     }
 
-    override fun stopped() {
-        viewModel.isEditable.removeObservers(this)
-        viewModel.userEmail.removeObservers(this)
-        viewModel.username.removeObservers(this)
-    }
-
     fun showLoginDialogue(newEmail: String) {
-        val dialog = LayoutInflater.from(this).inflate(R.layout.view_authorize_user_credentials, null)
+        val dialog =
+            LayoutInflater.from(this).inflate(R.layout.view_authorize_user_credentials, null)
         val dialogBuilder = AlertDialog.Builder(this)
             .setView(dialog).show()
 

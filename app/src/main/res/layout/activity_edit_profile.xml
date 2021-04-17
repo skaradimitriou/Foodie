@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/padding_16"
     tools:context=".ui.editProfile.EditProfileActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/edit_profile_btn"
+    <TextView
+        android:id="@+id/edit_profile_save_btn"
+        style="@style/h3_title_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_20"
-        android:layout_marginEnd="@dimen/margin_10"
-        android:background="@drawable/circle_black"
-        android:backgroundTint="@color/medium_grey"
-        android:padding="@dimen/padding_5"
-        android:src="@drawable/edit_icon"
+        android:layout_centerVertical="true"
+        android:textColor="@color/orange"
+        android:padding="@dimen/padding_10"
+        android:text="@string/save_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,77 +34,113 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/profile_username"
-        style="@style/h2_title_bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_photo"
-        tools:text="@string/profile_dummy_username" />
-
-    <TextView
-        android:id="@+id/profile_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_username"
-        tools:text="@string/profile_dummy_email" />
-
-    <TextView
         android:id="@+id/edit_profile_username_txt"
-        style="@style/h3_title_bold"
+        style="@style/h4_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:padding="@dimen/padding_10"
-        android:text="My username"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_profile_username"
+        android:layout_marginTop="@dimen/margin_20"
+        android:text="@string/username"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edit_profile_username" />
+        app:layout_constraintTop_toBottomOf="@id/profile_photo" />
 
     <EditText
         android:id="@+id/edit_profile_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_25"
-        android:layout_marginEnd="@dimen/padding_10"
         android:enabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/edit_profile_username_txt"
-        app:layout_constraintTop_toBottomOf="@id/profile_email" />
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@id/edit_username_btn"
+        app:layout_constraintStart_toStartOf="@id/edit_profile_username_txt"
+        app:layout_constraintTop_toBottomOf="@id/edit_profile_username_txt" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/edit_username_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_5"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/edit_icon"
+        android:backgroundTint="@color/orange"
+        android:padding="@dimen/padding_5"
+        app:layout_constraintEnd_toEndOf="@id/edit_profile_save_btn"
+        app:layout_constraintTop_toTopOf="@id/edit_profile_username" />
 
     <TextView
         android:id="@+id/edit_profile_email_txt"
-        style="@style/h3_title_bold"
+        style="@style/h4_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:padding="@dimen/padding_10"
-        android:text="My e-mail"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_profile_email"
+        android:layout_marginTop="@dimen/margin_10"
+        android:text="@string/e_mail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_profile_username_txt" />
+        app:layout_constraintTop_toBottomOf="@id/edit_profile_username" />
 
     <EditText
         android:id="@+id/edit_profile_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/padding_10"
         android:enabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/edit_profile_username"
-        app:layout_constraintTop_toBottomOf="@id/edit_profile_username" />
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toStartOf="@id/edit_email_btn"
+        app:layout_constraintStart_toStartOf="@id/edit_profile_username_txt"
+        app:layout_constraintTop_toBottomOf="@id/edit_profile_email_txt"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/edit_email_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_5"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/edit_icon"
+        android:backgroundTint="@color/orange"
+        android:padding="@dimen/padding_5"
+        app:layout_constraintEnd_toEndOf="@id/edit_profile_save_btn"
+        app:layout_constraintTop_toTopOf="@id/edit_profile_email" />
+
+    <TextView
+        android:id="@+id/edit_profile_phone_desc"
+        style="@style/h4_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/padding_10"
+        android:layout_marginTop="@dimen/margin_10"
+        android:text="@string/phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_profile_email" />
+
+    <EditText
+        android:id="@+id/edit_profile_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:inputType="phone"
+        app:layout_constraintEnd_toStartOf="@id/edit_phone_btn"
+        app:layout_constraintStart_toStartOf="@id/edit_profile_username_txt"
+        app:layout_constraintTop_toBottomOf="@id/edit_profile_phone_desc"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/edit_phone_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_5"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/edit_icon"
+        android:backgroundTint="@color/orange"
+        android:padding="@dimen/padding_5"
+        app:layout_constraintTop_toTopOf="@id/edit_profile_phone"
+       app:layout_constraintEnd_toEndOf="@id/edit_profile_save_btn" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/edit_profile_save_data_btn"
-        style="@style/yellow_button"
+        android:id="@+id/edit_profile_logout_btn"
+        style="@style/white_button"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_56"
-        android:layout_marginBottom="20dp"
-        android:text="@string/update_my_profile"
+        android:layout_height="@dimen/margin_50"
+        android:text="@string/log_out"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

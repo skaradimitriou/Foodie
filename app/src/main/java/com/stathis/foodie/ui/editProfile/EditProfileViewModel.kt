@@ -12,14 +12,56 @@ class EditProfileViewModel : ViewModel() {
 
     val auth = FirebaseAuth.getInstance()
     val database by lazy { FirebaseDatabase.getInstance().reference }
-    val isEditable = MutableLiveData<Boolean>()
+    val isUsernameEditable = MutableLiveData<Boolean>()
+    val isEmailEditable = MutableLiveData<Boolean>()
+    val isPhoneEditable = MutableLiveData<Boolean>()
     val userEmail = MutableLiveData<String>()
     val username = MutableLiveData<String>()
-    private var editableModeOn = false
+    val phoneNumber = MutableLiveData<String>()
+    private var usernameEditable = false
+    private var emailEditable = false
+    private var phoneEditable = false
 
     fun getUserData() {
         userEmail.value = FirebaseAuth.getInstance().currentUser?.email.toString()
+        getUserName()
+        getUserPhoneNo()
+    }
 
+    fun makeUsernameEditable() {
+        usernameEditable = !usernameEditable
+        isUsernameEditable.value = usernameEditable
+    }
+
+    fun makeEmailEditable() {
+        emailEditable = !emailEditable
+        isEmailEditable.value = emailEditable
+    }
+
+    fun makePhoneEditable() {
+        phoneEditable = !phoneEditable
+        isPhoneEditable.value = phoneEditable
+    }
+
+    private fun getUserPhoneNo() {
+        database.child("users")
+            .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            .child("userPhoneNo")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+                    when (p0.exists()) {
+                        true -> phoneNumber.value = p0.value.toString()
+                        false -> phoneNumber.value = "Not Added yet"
+                    }
+                }
+
+                override fun onCancelled(p0: DatabaseError) {
+                    phoneNumber.value = null
+                }
+            })
+    }
+
+    private fun getUserName() {
         database.child("users")
             .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
             .child("userData")
@@ -37,9 +79,11 @@ class EditProfileViewModel : ViewModel() {
             })
     }
 
-    fun makeFieldsEditable() {
-        editableModeOn = !editableModeOn
-        isEditable.value = editableModeOn
+    fun savePhoneToDb(phoneNumber: String) {
+        database.child("users")
+            .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            .child("userPhoneNo").setValue(phoneNumber)
+        getUserData()
     }
 
     fun saveUsernameToDb(username: String) {
@@ -60,5 +104,9 @@ class EditProfileViewModel : ViewModel() {
                     }
                 }
             }
+    }
+
+    fun logoutUser() {
+        auth.signOut()
     }
 }
