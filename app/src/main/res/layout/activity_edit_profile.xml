@@ -4,8 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_16"
     tools:context=".ui.editProfile.EditProfileActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/home_screen_background"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/black_tint"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:alpha="0.5"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/edit_profile_save_btn"
@@ -13,9 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:textColor="@color/orange"
-        android:padding="@dimen/padding_10"
+        android:padding="@dimen/margin_20"
         android:text="@string/save_btn"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,11 +55,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:padding="@dimen/padding_10"
-        android:layout_marginTop="@dimen/margin_20"
+        android:layout_margin="@dimen/padding_10"
+        android:layout_marginTop="@dimen/margin_10"
         android:text="@string/username"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_photo" />
+        app:layout_constraintTop_toBottomOf="@id/black_tint" />
 
     <EditText
         android:id="@+id/edit_profile_username"
@@ -59,12 +75,12 @@
         android:id="@+id/edit_username_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_5"
         android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginEnd="@dimen/margin_10"
         android:background="@drawable/edit_icon"
         android:backgroundTint="@color/orange"
         android:padding="@dimen/padding_5"
-        app:layout_constraintEnd_toEndOf="@id/edit_profile_save_btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/edit_profile_username" />
 
     <TextView
@@ -73,8 +89,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:padding="@dimen/padding_10"
         android:layout_marginTop="@dimen/margin_10"
+        android:layout_margin="@dimen/padding_10"
         android:text="@string/e_mail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_profile_username" />
@@ -87,18 +103,18 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toStartOf="@id/edit_email_btn"
         app:layout_constraintStart_toStartOf="@id/edit_profile_username_txt"
-        app:layout_constraintTop_toBottomOf="@id/edit_profile_email_txt"/>
+        app:layout_constraintTop_toBottomOf="@id/edit_profile_email_txt" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/edit_email_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_5"
         android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginEnd="@dimen/margin_10"
         android:background="@drawable/edit_icon"
         android:backgroundTint="@color/orange"
         android:padding="@dimen/padding_5"
-        app:layout_constraintEnd_toEndOf="@id/edit_profile_save_btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/edit_profile_email" />
 
     <TextView
@@ -107,8 +123,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:padding="@dimen/padding_10"
         android:layout_marginTop="@dimen/margin_10"
+        android:layout_margin="@dimen/padding_10"
         android:text="@string/phone_number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_profile_email" />
@@ -121,19 +137,19 @@
         android:inputType="phone"
         app:layout_constraintEnd_toStartOf="@id/edit_phone_btn"
         app:layout_constraintStart_toStartOf="@id/edit_profile_username_txt"
-        app:layout_constraintTop_toBottomOf="@id/edit_profile_phone_desc"/>
+        app:layout_constraintTop_toBottomOf="@id/edit_profile_phone_desc" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/edit_phone_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_5"
         android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginEnd="@dimen/margin_10"
         android:background="@drawable/edit_icon"
         android:backgroundTint="@color/orange"
         android:padding="@dimen/padding_5"
-        app:layout_constraintTop_toTopOf="@id/edit_profile_phone"
-       app:layout_constraintEnd_toEndOf="@id/edit_profile_save_btn" />
+        app:layout_constraintEnd_toEndOf="@id/edit_profile_save_btn"
+        app:layout_constraintTop_toTopOf="@id/edit_profile_phone" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/edit_profile_logout_btn"
