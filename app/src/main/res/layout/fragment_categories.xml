@@ -35,12 +35,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/categories_screen_header"
         app:spanCount="2"
         tools:itemCount="10"
-        tools:listitem="@layout/holder_category_item_row" />
+        tools:listitem="@layout/holder_category_parent_item_row" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

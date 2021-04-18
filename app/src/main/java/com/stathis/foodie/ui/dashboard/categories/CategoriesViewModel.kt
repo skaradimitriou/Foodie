@@ -8,6 +8,7 @@ import com.stathis.foodie.adapters.CategoriesAdapter
 import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.listeners.SuggestionItemClickListener
 import com.stathis.foodie.models.SuggestionItem
+import com.stathis.foodie.models.SuggestionModel
 
 
 class CategoriesViewModel : ViewModel(), ItemClickListener {

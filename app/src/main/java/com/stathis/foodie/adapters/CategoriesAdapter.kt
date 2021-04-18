@@ -9,6 +9,7 @@ import com.stathis.foodie.listeners.ItemClickListener
 import com.stathis.foodie.models.HomeCategoryItem
 import com.stathis.foodie.models.LocalModel
 import com.stathis.foodie.models.SuggestionItem
+import com.stathis.foodie.models.SuggestionModel
 
 class CategoriesAdapter(private val callback: ItemClickListener) :
     ListAdapter<LocalModel, CategoriesViewHolder>(DiffUtilClass<LocalModel>()) {
@@ -24,6 +25,7 @@ class CategoriesAdapter(private val callback: ItemClickListener) :
 
     override fun getItemViewType(position: Int): Int = when (getItem(position)) {
         is SuggestionItem -> R.layout.holder_category_item_row
+        is SuggestionModel -> R.layout.holder_category_parent_item_row
         is HomeCategoryItem -> R.layout.holder_categories_item_row
         else -> R.layout.holder_empty_item
     }
