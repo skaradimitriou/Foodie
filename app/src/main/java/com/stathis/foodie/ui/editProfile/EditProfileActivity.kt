@@ -1,11 +1,14 @@
 package com.stathis.foodie.ui.editProfile
 
+import android.content.Intent
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.FirebaseAuth
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
+import com.stathis.foodie.ui.intro.IntroActivity
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.view_authorize_user_credentials.view.*
 
@@ -58,7 +61,7 @@ class EditProfileActivity : AbstractActivity(R.layout.activity_edit_profile) {
         }
 
         edit_profile_logout_btn.setOnClickListener {
-            viewModel.logoutUser()
+            askForLogout()
         }
 
         observeData()
@@ -121,5 +124,21 @@ class EditProfileActivity : AbstractActivity(R.layout.activity_edit_profile) {
             viewModel.saveEmailToDb(userEmail, userPassword, newEmail)
             dialogBuilder.dismiss()
         }
+    }
+
+    private fun askForLogout() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Logout")
+        builder.setMessage("Do you want to log out?")
+
+        builder.setPositiveButton("YES") { dialog, which ->
+            viewModel.logoutUser()
+            startActivity(Intent(this, IntroActivity::class.java))
+        }
+
+        builder.setNegativeButton("CANCEL") { dialog, which ->
+            dialog.dismiss()
+        }
+        builder.show()
     }
 }

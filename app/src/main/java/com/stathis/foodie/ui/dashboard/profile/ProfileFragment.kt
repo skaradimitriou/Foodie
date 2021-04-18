@@ -55,11 +55,6 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
             startActivity(Intent(requireContext(), EditProfileActivity::class.java))
         }
 
-        logout.apply {
-            this.logout_icon.setOnClickListener { askForLogout() }
-            this.logout_text.setOnClickListener { askForLogout() }
-        }
-
         profile_favorites_recycler.adapter = viewModel.adapter
 
         viewModel.getFavoriteData(object : RecipeClickListener {
@@ -165,21 +160,5 @@ class ProfileFragment : AbstractFragment(R.layout.fragment_profile) {
                 }
             }
         }
-    }
-
-    private fun askForLogout() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Logout")
-        builder.setMessage("Do you want to log out?")
-
-        builder.setPositiveButton("YES") { dialog, which ->
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(requireContext(), IntroActivity::class.java))
-        }
-
-        builder.setNegativeButton("CANCEL") { dialog, which ->
-            dialog.dismiss()
-        }
-        builder.show()
     }
 }

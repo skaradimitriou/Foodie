@@ -7,26 +7,34 @@
     android:background="@color/light_grey"
     tools:context=".ui.dashboard.profile.ProfileFragment">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/edit_profile_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_10"
-        android:layout_marginTop="@dimen/margin_20"
-        android:background="@drawable/circle_black"
-        android:backgroundTint="@color/medium_grey"
-        android:padding="@dimen/padding_5"
-        android:src="@drawable/edit_icon"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/home_screen_background"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/profile_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/logout"
-        layout="@layout/logout_item"
+    <View
+        android:id="@+id/black_tint"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha="0.5"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/profile_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/edit_profile_btn"
+        style="@style/h3_title_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_20"
-        android:layout_marginEnd="@dimen/margin_10"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/padding_15"
+        android:text="EDIT PROFILE"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +43,7 @@
         android:layout_width="@dimen/image_110"
         android:layout_height="@dimen/image_110"
         android:layout_centerVertical="true"
-        android:layout_marginTop="@dimen/margin_35"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="@dimen/margin_10"
         android:clickable="true"
         android:focusable="true"
@@ -46,10 +54,12 @@
 
     <TextView
         android:id="@+id/profile_username"
-        style="@style/h2_title_bold"
+        style="@style/h2_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:paddingTop="@dimen/padding_10"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_photo"
@@ -59,6 +69,8 @@
         android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_20"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_username"
@@ -70,8 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginTop="@dimen/margin_25"
-        android:padding="@dimen/padding_10"
+        android:padding="@dimen/padding_16"
         android:text="@string/my_favorites"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_email" />
