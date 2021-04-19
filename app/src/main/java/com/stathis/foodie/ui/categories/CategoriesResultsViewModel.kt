@@ -38,11 +38,11 @@ class CategoriesResultsViewModel : ViewModel(), ItemClickListener {
 
     fun getResults(cuisineType: String) {
         isLoading.value = true
-        val cleanCuisineType = cuisineType.replace("\\s".toRegex(), "")
-        when (cleanCuisineType) {
-            "breakfast", "lunch","dinner","snack","teatime" -> repo.getMealTypeResults(cleanCuisineType)
-            "soup", "salad", "dessert","cereals","pancake","starter","omelet" -> repo.getDishTypeResults(cleanCuisineType)
-            "indian", "chinese", "italian","mexican","japanese" -> repo.getCuisineTypeResults(cleanCuisineType)
+        val newCuisineType = cuisineType.replace("\\s".toRegex(), "")
+        when (newCuisineType) {
+            "breakfast", "lunch","dinner","snack","teatime" -> repo.getMealTypeResults(newCuisineType)
+            "soup", "salad", "dessert","cereals","pancake","starter","omelet" -> repo.getDishTypeResults(newCuisineType)
+            "indian", "chinese", "italian","mexican","japanese" -> repo.getCuisineTypeResults(newCuisineType)
             else -> Unit
         }
     }
