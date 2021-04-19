@@ -16,22 +16,28 @@ class CategoriesRepository {
                     SuggestionItem("Breakfast", R.drawable.breakfast),
                     SuggestionItem("Lunch", R.drawable.lunch_icon),
                     SuggestionItem("Dinner", R.drawable.breakfast),
-                    SuggestionItem("Snack", R.drawable.lunch_icon),
-                    SuggestionItem("Tea Time", R.drawable.lunch_icon)
+                    SuggestionItem("Snack", R.drawable.snack_icon),
+                    SuggestionItem("Tea Time", R.drawable.tea_icon)
                 )
             ),
             SuggestionModel(
                 "Dish Types", listOf(
                     SuggestionItem("Soup", R.drawable.soup_icon),
                     SuggestionItem("Salad", R.drawable.salad_icon),
-                    SuggestionItem("Dessert", R.drawable.desert_icon)
+                    SuggestionItem("Dessert", R.drawable.desert_icon),
+                    SuggestionItem("Cereals", R.drawable.cereal),
+                    SuggestionItem("Pancake", R.drawable.pancake),
+                    SuggestionItem("Starter", R.drawable.starter_food),
+                    SuggestionItem("Omelet", R.drawable.omelette)
                 )
             ),
             SuggestionModel(
                 "Cuisine Types", listOf(
                     SuggestionItem("Indian", R.drawable.indian_icon),
                     SuggestionItem("Chinese", R.drawable.chinese_icon),
-                    SuggestionItem("Italian", R.drawable.pasta_icon)
+                    SuggestionItem("Italian", R.drawable.pasta_icon),
+                    SuggestionItem("Mexican", R.drawable.mexican_icon),
+                    SuggestionItem("Japanese", R.drawable.sushi_icon)
                 )
             )
         )
