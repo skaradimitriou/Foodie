@@ -26,8 +26,8 @@ e) Create paging for the results screens ✔️
 
 ### Ideas for further development 
 
-a) Integrate Onboarding Screens <br/>
-b) Allow users to edit their profile data <br/>
+a) Integrate Onboarding Screens ✔️<br/>
+b) Allow users to edit their profile data ✔️<br/>
 c) Allow users to have friends <br/>
 
 ### Programming Language 
