@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/image_100"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_5">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ingredient_img"
+        android:layout_width="@dimen/image_50"
+        android:layout_height="@dimen/image_50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/sushi_icon" />
+
+    <TextView
+        android:id="@+id/ingredient_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_img"
+        tools:text="ingredient" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

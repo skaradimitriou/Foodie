@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/recipe_details_img"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="@dimen/image_250"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,7 +19,7 @@
         android:id="@+id/recipe_card_bg"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="@dimen/image_220"
         android:background="@drawable/round_corners"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,8 +37,8 @@
         android:backgroundTint="@color/yellow"
         android:padding="@dimen/margin_10"
         android:src="@drawable/like_icon"
-        app:layout_constraintEnd_toEndOf="@id/share_btn"
-        app:layout_constraintTop_toBottomOf="@id/share_btn" />
+        app:layout_constraintEnd_toEndOf="@+id/share_btn"
+        app:layout_constraintTop_toBottomOf="@+id/share_btn" />
 
     <ImageView
         android:id="@+id/share_btn"
@@ -53,14 +53,14 @@
 
     <TextView
         android:id="@+id/recipe_detail_label"
-        style="@style/h2_title_bold"
+        style="@style/h2_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_20"
+        android:layout_margin="@dimen/padding_15"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/recipe_card_bg"
+        app:layout_constraintTop_toTopOf="@+id/recipe_card_bg"
         tools:text="@string/chicken_with_soup" />
 
     <ImageView
@@ -118,17 +118,6 @@
         app:layout_constraintStart_toStartOf="@id/calories_bg"
         app:layout_constraintTop_toBottomOf="@id/calories" />
 
-    <Button
-        android:id="@+id/open_recipe_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/padding_15"
-        android:backgroundTint="@color/red"
-        android:text="@string/open_recipe"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/fats"
-        app:layout_constraintStart_toStartOf="@id/calories_bg" />
-
     <ImageView
         android:id="@+id/protein_progressbar"
         android:layout_width="@dimen/image_70"
@@ -136,7 +125,7 @@
         android:layout_marginStart="@dimen/padding_15"
         android:background="@drawable/circle_black"
         android:backgroundTint="@color/navy"
-        app:layout_constraintEnd_toStartOf="@id/carbs_progressbar"
+        app:layout_constraintEnd_toStartOf="@+id/carbs_progressbar"
         app:layout_constraintStart_toEndOf="@id/calories_bg"
         app:layout_constraintTop_toTopOf="@id/calories_bg" />
 
@@ -233,5 +222,38 @@
         app:layout_constraintEnd_toEndOf="@id/fats"
         app:layout_constraintStart_toStartOf="@id/fats"
         app:layout_constraintTop_toBottomOf="@id/fats" />
+
+    <TextView
+        android:id="@+id/recipe_detail_ingredients"
+        style="@style/h3_title_bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_10"
+        android:text="Ingredients"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calories_bg" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recipe_details_recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="@+id/fat_progressbar"
+        app:layout_constraintStart_toStartOf="@id/recipe_detail_ingredients"
+        app:layout_constraintTop_toBottomOf="@id/recipe_detail_ingredients" />
+
+    <Button
+        android:id="@+id/open_recipe_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_10"
+        android:backgroundTint="@color/red"
+        android:text="@string/open_recipe"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fats"
+        app:layout_constraintStart_toStartOf="@id/calories_bg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

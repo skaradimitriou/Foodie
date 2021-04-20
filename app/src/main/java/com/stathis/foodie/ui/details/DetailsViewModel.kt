@@ -2,6 +2,7 @@ package com.stathis.foodie.ui.details
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.stathis.foodie.adapters.RecipeIngredientsAdapter
 import com.stathis.foodie.models.RecipeMain
 import kotlinx.android.synthetic.main.activity_details.*
 
@@ -10,6 +11,7 @@ class DetailsViewModel : ViewModel() {
     private val repo = DetailsRepository()
     val isFavoriteRecipe = repo.isFavoriteRecipe
     val cookTime = MutableLiveData<String>()
+    val adapter = RecipeIngredientsAdapter()
 
     fun getCookTime(totalTime: Double) {
         val hours: Int = totalTime.toInt() / 60

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.stathis.foodie.R
 import com.stathis.foodie.abstraction.AbstractActivity
+import com.stathis.foodie.adapters.RecipeIngredientsAdapter
 import com.stathis.foodie.models.RecipeMain
 import com.stathis.foodie.ui.webview.WebviewActivity
 import com.stathis.foodie.utils.formatNumber
@@ -30,6 +31,9 @@ class DetailsActivity : AbstractActivity(R.layout.activity_details) {
 
         viewModel.isFavoriteRecipe(recipe)
         presentRecipeData(recipe)
+
+        viewModel.adapter.submitList(recipe.recipe.ingredients)
+        recipe_details_recycler.adapter = viewModel.adapter
 
         viewModel.getCookTime(recipe.recipe.totalTime)
 
