@@ -1,5 +1,5 @@
 # Foodie
-This is a recipe app that lets you search for recipe in various ways through an application:
+https://user-images.githubusercontent.com/64270931/116750513-4261cd00-aa0b-11eb-830b-9df9a0150645.png
 
 ## Main Goal
 
